@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "450803549282",
+    "project_id": "e-commerce-fady",
+    "storage_bucket": "e-commerce-fady.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450803549282:android:d8aedc258f4096ae927d3b",
+        "android_client_info": {
+          "package_name": "com.example.e_commerceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450803549282-np83amrcp6l1c1e6jkgvc9t5dtfh094c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.e_commerceapp",
+            "certificate_hash": "2e2d4daad4dc7bf67117564ce29fdbf005594ea9"
+          }
+        },
+        {
+          "client_id": "450803549282-i89h1s9cjkqe73ri37nd4t1i4kkcfjto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGr7LkBXw0LyOC0u_dbt5P1A-AWPBMvFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450803549282-i89h1s9cjkqe73ri37nd4t1i4kkcfjto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
