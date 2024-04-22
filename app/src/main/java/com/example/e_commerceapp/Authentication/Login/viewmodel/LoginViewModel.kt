@@ -14,8 +14,8 @@ import kotlin.coroutines.coroutineContext
 
 
 class LoginViewModel : ViewModel() {
-//    var _successfullRegister = MutableLiveData<Boolean>(false)
-//    val successfullRegister : LiveData<Boolean> =_successfullRegister
+  private var _successfullLogin = MutableLiveData<Boolean?>(null)
+    val successfullLogin : LiveData<Boolean?> =_successfullLogin
  //   private lateinit var binding: LoginViewModel
     private lateinit var firebaseAuth: FirebaseAuth
 
@@ -25,6 +25,17 @@ class LoginViewModel : ViewModel() {
             firebaseAuth = FirebaseAuth.getInstance()
         }
     }
+
+
+
+ fun loginUserFirebase(email :String , pass:String){
+
+     firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+         _successfullLogin.value = it.isSuccessful
+     }}
+
+
+
 
 
 
