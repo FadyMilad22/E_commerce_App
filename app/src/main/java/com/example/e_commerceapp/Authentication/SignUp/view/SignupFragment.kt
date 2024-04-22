@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.e_commerceapp.Authentication.SignUp.viewmodel.SignupViewModel
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.FragmentSignupBinding
@@ -38,19 +39,22 @@ class SignupFragment : Fragment() {
 
        binding.apply {
            button4.setOnClickListener {
-               isValidData(inputEmail.text.toString(),inputUsername.text.toString(),
-                   inputMobile.text.toString(),inputPassword.text.toString()) } }
+               isValidData(inputEmail.text.toString().trim(),inputUsername.text.toString().trim(),
+                   inputMobile.text.toString().trim(),inputPassword.text.toString().trim()) } }
 
-
+  binding.textView.setOnClickListener(){
+      findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
+  }
 
 
 viewModel.successfullRegister.observe(viewLifecycleOwner){
 
-    if (it){
-        Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show()
+    if (it == true){
+        Toast.makeText(context, "User Registered", Toast.LENGTH_SHORT).show()
         view.findNavController().navigate(R.id.action_signupFragment_to_homeActivity)
-    }else {
-        Toast.makeText(context, "NotDone", Toast.LENGTH_SHORT).show() }
+    }else if (it==false){
+      Toast.makeText(context, "User isn't Registered,check with the Admin ", Toast.LENGTH_SHORT).show()
+    }
 
 }
 
@@ -94,7 +98,7 @@ viewModel.successfullRegister.observe(viewLifecycleOwner){
                 .show()
         }
         if(!isValidPassword(password)){
-            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Password").setMessage("A password must have between four and eight letters, both lowercase and uppercase letters, and contain special characters.").setPositiveButton("Ok", null)
+            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Password").setMessage("A password must have between eight and twenty letters, both lowercase and uppercase letters, and contain special characters.").setPositiveButton("Ok", null)
                 .show()
         }
         if(!isValidEmail(email)){
@@ -115,7 +119,7 @@ viewModel.successfullRegister.observe(viewLifecycleOwner){
         return name.matches(nameRegex.toRegex())
     }
     private fun isValidPassword(password:String):Boolean{
-        val passwordRegex="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,8}$"
+        val passwordRegex="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$"
         return password.matches(passwordRegex.toRegex())
     }
     private fun isValidPhoneNumber(phoneNumber: String): Boolean {

@@ -10,10 +10,10 @@ import kotlinx.coroutines.launch
 
 class SignupViewModel : ViewModel() {
 
-  private var _successfullRegister = MutableLiveData<Boolean>(false)
-    val successfullRegister : LiveData<Boolean> =_successfullRegister
-    //private lateinit var binding: SignupViewModelBinding
+  private var _successfullRegister = MutableLiveData<Boolean?>(null)
+    val successfullRegister : LiveData<Boolean?> =_successfullRegister
     private lateinit var firebaseAuth: FirebaseAuth
+
 
     fun  InitFirebase(){
         viewModelScope.launch {
@@ -23,33 +23,19 @@ class SignupViewModel : ViewModel() {
 
 
 
-
     fun RegisterUserFirebase(email :String , pass: String , name :String , phoneNumber: String){
-//     val email = binding.emailEt.text.toString()
-//     val pass = binding.passET.text.toString()
-//     val confirmPass = binding.confirmPassEt.text.toString()
 
-//     if (email.isNotEmpty() && pass.isNotEmpty()) {
-        // if (pass == confirmPass) {
         viewModelScope.launch {
             firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    _successfullRegister.value = true
-                } else {
-                    _successfullRegister.value=false
-                    //Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                _successfullRegister.value = it.isSuccessful
+            } }
+    }
 
-                }
-            }
-//         } else {
-//             Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
-//         }
-//     } else {
-//         Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
-//
-//     }
-        }}
-    //}
+
+
+
+
+
 
 
 
