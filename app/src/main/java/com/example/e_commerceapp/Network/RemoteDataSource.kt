@@ -1,15 +1,15 @@
-package com.example.recipemobileapp.Network
+package com.example.e_commerceapp.Network
 
-import androidx.lifecycle.MutableLiveData
-import com.example.e_commerceapp.Model.Product
-import com.example.e_commerceapp.Model.Products
+import com.example.e_commerceapp.Model.AuthResponse
+import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
+import com.example.e_commerceapp.Model.User
+import retrofit2.Response
 
 
 interface RemoteDataSource {
-    suspend fun getAllProducts():MutableLiveData<Products>
-    suspend fun getRandomProduct(): Product
-    suspend fun getSearchResult( search :String): Product
 
+    suspend fun registerCustomer(user : User): Response<AuthResponse>
+    suspend fun getItemsOfCategorie(category: String): Response<ItemsOfCategoryResponse>
 
 
 }

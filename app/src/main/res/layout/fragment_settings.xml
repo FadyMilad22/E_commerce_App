@@ -8,7 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.fragment.account.AccountFragment">
+        tools:context=".presentation.main.fragment.account.AccountFragment"
+        android:background="@color/white">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"

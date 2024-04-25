@@ -7,13 +7,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.e_commerceapp.Authentication.Login.Repo.LoginRepo
 import com.example.e_commerceapp.HomeActivity.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import kotlin.coroutines.coroutineContext
 
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(private val loginRepo: LoginRepo) : ViewModel() {
   private var _successfullLogin = MutableLiveData<Boolean?>(null)
     val successfullLogin : LiveData<Boolean?> =_successfullLogin
  //   private lateinit var binding: LoginViewModel
@@ -32,12 +33,23 @@ class LoginViewModel : ViewModel() {
 
      firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
          _successfullLogin.value = it.isSuccessful
+
      }}
 
+ fun alreadyLoggedIn(){
+
+
+
+     if(firebaseAuth.currentUser != null){
+         _successfullLogin.value= true
+     }
 
 
 
 
 
+
+
+}
 
 }

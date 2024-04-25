@@ -1,0 +1,23 @@
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+
+        <layer-list >
+            <item>
+                <bitmap
+                    android:src="@drawable/background" />
+            </item>
+            <item android:bottom="50dp">
+                <bitmap
+                    android:src="@drawable/blabla" />
+
+            </item>
+        </layer-list>
+
+    </item>
+    <item android:bottom="50dp">
+        <bitmap
+            android:src="@drawable/rectangle" />
+
+    </item>
+</layer-list>

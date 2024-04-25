@@ -10,8 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
+import com.example.e_commerceapp.Authentication.Login.Repo.LoginRepoImpl
 import com.example.e_commerceapp.Authentication.Login.viewmodel.LoginViewModel
+import com.example.e_commerceapp.Authentication.Login.viewmodel.LoginViewModelFactory
 import com.example.e_commerceapp.Authentication.SignUp.viewmodel.SignupViewModel
+import com.example.e_commerceapp.Network.APIClient
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.FragmentLoginBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -35,9 +38,9 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        gettingViewModelReady(requireContext())
+        gettingViewModelReady()
         viewModel.InitFirebase()
-
+        viewModel.alreadyLoggedIn()
 
         binding.textView6.setOnClickListener(){
             view.findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
@@ -69,13 +72,9 @@ class LoginFragment : Fragment() {
 
 
 
-
-    private fun gettingViewModelReady(context: Context) {
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-//        val loginViewModelFactory = LoginViewModelFactory(
-//            LoginRepoImp(LocalDataSourceImpl(context)) )
-//        loginViewModel =
-//            ViewModelProvider(this, loginViewModelFactory).get(LoginViewModel::class.java)
+    private fun gettingViewModelReady(){
+        val factory = LoginViewModelFactory(LoginRepoImpl(APIClient))
+        viewModel = ViewModelProvider(this,factory)[LoginViewModel::class.java]
     }
 
 

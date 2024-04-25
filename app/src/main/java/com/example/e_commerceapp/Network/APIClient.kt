@@ -1,23 +1,20 @@
-package com.example.recipemobileapp.Network
+package com.example.e_commerceapp.Network
 
 
-import androidx.lifecycle.MutableLiveData
-import com.example.e_commerceapp.Model.Product
-import com.example.e_commerceapp.Model.Products
+import com.example.e_commerceapp.Model.AuthResponse
+import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
+import com.example.e_commerceapp.Model.User
+import retrofit2.Response
 
 
-object APIClient:RemoteDataSource {
-    override suspend fun getAllProducts(): MutableLiveData<Products> {
-        return APIHelper.retrofit.create(APIService::class.java).getAllProducts()
+object APIClient: RemoteDataSource {
+
+
+    override suspend fun registerCustomer(user : User): Response<AuthResponse> {
+        return APIHelper.retrofit.create(APIService::class.java).createCustomer(user)
     }
-
-    override suspend fun getRandomProduct(): Product {
-        return APIHelper.retrofit.create(APIService::class.java).getRandomProduct()
+    override suspend fun getItemsOfCategorie(category: String): Response<ItemsOfCategoryResponse> {
+        return APIHelper.retrofit.create(APIService::class.java).getItemsInCategory(category)
     }
-
-    override suspend fun getSearchResult(search: String): Product {
-        return APIHelper.retrofit.create(APIService::class.java).getSearchResult() //search
-    }
-
 
 }
