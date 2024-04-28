@@ -4,8 +4,7 @@
 
         <layer-list >
             <item>
-                <bitmap
-                    android:src="@drawable/background" />
+               <color android:color="@color/primary_color"/>
             </item>
             <item android:bottom="50dp">
                 <bitmap

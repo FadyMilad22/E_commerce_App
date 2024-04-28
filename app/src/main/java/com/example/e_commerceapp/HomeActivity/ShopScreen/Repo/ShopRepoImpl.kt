@@ -1,6 +1,9 @@
 package com.example.e_commerceapp.HomeActivity.ShopScreen.Repo
 
+import com.example.e_commerceapp.Model.CategoriesResponse
+import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Network.RemoteDataSource
+import retrofit2.Response
 
 class ShopRepoImpl(val remoteDataSource: RemoteDataSource,
                 ): ShopRepo { // val localDataSource: LocalDataSource
@@ -21,7 +24,12 @@ class ShopRepoImpl(val remoteDataSource: RemoteDataSource,
 //
 //         return remoteDataSource.getAllMeals(' ');
 //     }
+override suspend fun getCategories(): Response<CategoriesResponse> {
+    return remoteDataSource.getCategories()
+}
 
-
+    override suspend fun getItemByName(name :String): Response<ItemsOfCategoryResponse> {
+        return remoteDataSource.getItemsByName(name)
+    }
 
                 }

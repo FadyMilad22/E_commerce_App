@@ -45,9 +45,14 @@ class SignupFragment : Fragment() {
                isValidData(inputEmail.text.toString().trim(),inputUsername.text.toString().trim(),
                    inputMobile.text.toString().trim(),inputPassword.text.toString().trim()) } }
 
-  binding.textView.setOnClickListener(){
+  binding.textView2.setOnClickListener(){
       findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
   }
+
+        binding.textView.setOnClickListener(){
+            findNavController().navigate(R.id.action_signupFragment_to_signupSellerFragment)
+        }
+
 
 
 viewModel.successfullRegister.observe(viewLifecycleOwner){

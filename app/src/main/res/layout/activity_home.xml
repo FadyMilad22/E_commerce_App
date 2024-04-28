@@ -18,20 +18,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/home_nav_graph" />
+        app:navGraph="@navigation/home_nav_graph"
+        />
 
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout_home"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-
+        android:background="#00000000"
         >
 
         <com.google.android.material.bottomappbar.BottomAppBar
@@ -39,12 +38,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            >
+            android:background="#00000000"
+
+            tools:targetApi="p">
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomnavigationbar"
                 android:layout_width="match_parent"
+              app:itemTextColor="@color/primary_color"
                 android:layout_height="wrap_content"
-
+                android:background="#00000000"
                 app:menu="@menu/btm_nav_menu">
 
 

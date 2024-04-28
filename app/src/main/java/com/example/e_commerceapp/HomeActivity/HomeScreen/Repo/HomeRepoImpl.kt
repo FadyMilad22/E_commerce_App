@@ -9,8 +9,8 @@ class HomeRepoImpl(val remoteDataSource: RemoteDataSource,
                  ): HomeRepo {
 
 
-    override suspend fun getAllMealsFromAPI(category : String): Response<ItemsOfCategoryResponse> {
-        return remoteDataSource.getItemsOfCategorie(category)
+    override suspend fun getItemsofCategory(category : String): Response<ItemsOfCategoryResponse> {
+        return remoteDataSource.getItemsOfCategory(category)
     }
 
 }

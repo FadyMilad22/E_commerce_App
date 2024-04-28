@@ -9,6 +9,6 @@ interface HomeRepo {
 //    suspend fun getuserWithMeals(): List<Userwithmeals>
 //    suspend fun deleteWishlist(wishlist: Wishlist)
 
-    suspend fun getAllMealsFromAPI(category : String): Response<ItemsOfCategoryResponse>
+    suspend fun getItemsofCategory(category : String): Response<ItemsOfCategoryResponse>
 
 }

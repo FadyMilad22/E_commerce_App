@@ -8,8 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.main.fragment.account.AccountFragment"
-        android:background="@color/white">
+        tools:context=".presentation.main.fragment.account.AccountFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"
@@ -21,10 +20,11 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userProfileImage"
 android:src="@drawable/user"
+            android:background="@color/onprimary_color"
             android:layout_width="@dimen/_55sdp"
             android:layout_height="@dimen/_55sdp"
             android:layout_marginStart="@dimen/_8sdp"
-            app:civ_border_color="@color/primary_color"
+            app:civ_border_color="@color/onprimary_color"
             app:civ_border_width="1dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="parent"

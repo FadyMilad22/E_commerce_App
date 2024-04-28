@@ -55,8 +55,17 @@ class LoginFragment : Fragment() {
 
         viewModel.successfullLogin.observe(viewLifecycleOwner){
             if (it== true){
-              Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
-                view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
+           //   Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
+                if( (viewModel.user.value?.userType).equals("seller")){
+                    view.findNavController().navigate(R.id.action_loginFragment_to_sellerActivity)
+                }
+                else {
+                    Toast.makeText(context, "Welcome ${viewModel.user.value?.userType}", Toast.LENGTH_SHORT).show()
+                view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)}
+
+
+
+
             }else if(it ==false){
               Toast.makeText(context, "This user doesn't Exist", Toast.LENGTH_SHORT).show()
             }

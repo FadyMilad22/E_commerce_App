@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.e_commerceapp.Authentication.Login.viewmodel.LoginViewModel
 import com.example.e_commerceapp.Authentication.SignUp.Repo.SignupRepo
-import com.example.e_commerceapp.Model.User
+import com.example.e_commerceapp.Model.Customer
+import com.example.e_commerceapp.Model.Seller
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,12 +36,12 @@ class SignupViewModel (private val signupRepo: SignupRepo): ViewModel() {
 
                     viewModelScope.launch(Dispatchers.IO) {
 
-Log.i("Fad1234","${firebaseAuth.currentUser?.uid}" )
-                        val user = User(firebaseAuth.currentUser?.uid, name, phoneNumber)
+Log.i("Fady1234","${firebaseAuth.currentUser?.uid}" )
+                        val user = Customer(firebaseAuth.currentUser?.uid, name, phoneNumber)
 
                        val response= signupRepo.regestercustomer(user)
-                        Log.i("Fad12345","${response.isSuccessful}" )
-                        Log.i("Fad12345","${response.body()}" )
+                        Log.i("Fady12345","${response.isSuccessful}" )
+                        Log.i("Fady12345","${response.body()}" )
                     }
 
                 }
@@ -50,6 +50,28 @@ Log.i("Fad1234","${firebaseAuth.currentUser?.uid}" )
     }
 
 
+
+    fun RegisterSellerFirebase(email :String , pass: String , name :String ){
+
+        viewModelScope.launch {
+            firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+                _successfullRegister.value = it.isSuccessful
+                if (it.isSuccessful){
+
+                    viewModelScope.launch(Dispatchers.IO) {
+
+                        Log.i("Fad1234","${firebaseAuth.currentUser?.uid}" )
+                        val user = Seller(firebaseAuth.currentUser?.uid, name)
+
+                        val response= signupRepo.regesterSeller(user)
+                        Log.i("Fad12345","${response.isSuccessful}" )
+                        Log.i("Fad12345","${response.body()}" )
+                    }
+
+                }
+
+            } }
+    }
 
 
 

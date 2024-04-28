@@ -1,11 +1,11 @@
 package com.example.e_commerceapp.Authentication.Login.Repo
 
-interface LoginRepo {
-//    suspend fun deleteMeal(meal: Meal)
-//    suspend fun getuserWithMeals(): List<Userwithmeals>
-//    suspend fun deleteWishlist(wishlist: Wishlist)
+import com.example.e_commerceapp.Model.UserLoginResponse
+import retrofit2.Response
 
-//    suspend fun getAllProducts () : Response<Recipe>
+interface LoginRepo {
+
+    suspend fun loginUser(uid :String) : Response<UserLoginResponse>
 
 
 }

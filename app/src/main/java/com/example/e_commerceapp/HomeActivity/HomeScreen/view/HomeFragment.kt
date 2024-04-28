@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
 
         viewModel.hotPrices.observe(viewLifecycleOwner){ items->
             if(items != null){
-            binding.progresBarAllMeals.visibility = View.GONE
+                binding.progresBarAllMeals.visibility = View.GONE
                 addElements(items,binding.recyclerViewExclusive)
                  }else{
                 binding.progresBarAllMeals.visibility = View.VISIBLE

@@ -10,3 +10,12 @@ data class Item(
     val Quantity: Int,
     val URL: String
 )
+
+//{
+//  "Name": "Samsung A13",
+//  "Description": "An andriod phone",
+//  "Price" : 5,
+//  "Quantity": 5,
+//  "URL" : "Dummy",
+//  "categories": ["Electronics", "Home Accessories"]
+//}
