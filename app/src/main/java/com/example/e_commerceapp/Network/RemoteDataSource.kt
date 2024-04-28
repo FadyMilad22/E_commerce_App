@@ -6,6 +6,7 @@ import com.example.e_commerceapp.Model.CategoriesResponse
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.Customer
 import com.example.e_commerceapp.Model.Item
+import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
 import com.example.e_commerceapp.Model.UserLoginResponse
 import retrofit2.Response
@@ -22,6 +23,6 @@ interface RemoteDataSource {
     suspend fun deleteItem(itemID : Int, token : String) : Response<AuthResponse>
     suspend fun updateItem(itemID : Int, token : String , item : Item) : Response<AuthResponse>
     suspend fun getItemsofthisSeller(token: String): Response<ItemsOfCategoryResponse>
-    suspend fun loginUser(uid: String ): Response<UserLoginResponse>
+    suspend fun loginUser(loginResquest : LoginRequest): Response<UserLoginResponse>
 
 }

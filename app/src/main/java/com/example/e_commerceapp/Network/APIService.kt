@@ -6,6 +6,7 @@ import com.example.e_commerceapp.Model.CategoriesResponse
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.Customer
 import com.example.e_commerceapp.Model.Item
+import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
 import com.example.e_commerceapp.Model.UserLoginResponse
 import retrofit2.Response
@@ -71,8 +72,9 @@ interface APIService {
 
 // User functionality
 
+
     @POST("users/login")
-    suspend fun userLogin(@Body uid: String): Response<UserLoginResponse>
+    suspend fun userLogin(@Body uid: LoginRequest): Response<UserLoginResponse>
 
 
 }

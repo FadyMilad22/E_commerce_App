@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.e_commerceapp.Authentication.Login.Repo.LoginRepo
 import com.example.e_commerceapp.Model.DataXX
+import com.example.e_commerceapp.Model.LoginRequest
 
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
@@ -41,46 +42,39 @@ class LoginViewModel(private val loginRepo: LoginRepo) : ViewModel() {
 
          if (it.isSuccessful) {
              Log.i("Fady1", "login success")
-             viewModelScope.launch(Dispatchers.IO) {
-                 Log.i("Fady1", firebaseAuth.currentUser!!.uid)
-
-                 val response = loginRepo.loginUser(firebaseAuth.currentUser!!.uid)
-                 Log.i("Fady1", "UID success")
-                 Log.i("Fady1", "$response")
-                 if (response.isSuccessful) {
-
-                     _user.value = (response.body()?.data)
-                     _successfullLogin.value = it.isSuccessful
+             LogintoAPI()
                  }
              }
-         } } }
-
- }
+         } }
 
 
-//    fun loginUserFirebase(email: String, pass: String) {
-//        viewModelScope.launch {
-//
-//                val result = firebaseAuth.signInWithEmailAndPassword(email, pass).await()
-//                _successfullLogin.value = result.isSuccessful
-//                if (result.isSuccessful) {
-//                    loginRepo.loginUser(firebaseAuth.currentUser!!.uid)
-//                }
-//
-//                // Handle login exception here
-//
-//            }
-//        }
 
 
+   fun LogintoAPI(){
+
+       viewModelScope.launch() {
+           Log.i("Fady1", firebaseAuth.currentUser!!.uid)
+
+           val response = loginRepo.loginUser(LoginRequest(firebaseAuth.currentUser!!.uid))
+           Log.i("Fady1", "UID success")
+           Log.i("Fady1", "${response.body()}")
+           if (response.isSuccessful) {
+
+               _user.value = (response.body()?.data)
+               _successfullLogin.value = true
+           }
+       }
+
+
+   }
 
     fun alreadyLoggedIn(){
 
 
-
      if(firebaseAuth.currentUser != null){
 
-         _successfullLogin.value= true
+         LogintoAPI()
+
      }
 
 

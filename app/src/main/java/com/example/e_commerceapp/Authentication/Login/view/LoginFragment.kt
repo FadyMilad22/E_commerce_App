@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.example.e_commerceapp.Authentication.Login.Repo.LoginRepoImpl
 import com.example.e_commerceapp.Authentication.Login.viewmodel.LoginViewModel
@@ -18,6 +19,8 @@ import com.example.e_commerceapp.Network.APIClient
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.FragmentLoginBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
 
@@ -39,6 +42,9 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         gettingViewModelReady()
+
+
+
         viewModel.InitFirebase()
         viewModel.alreadyLoggedIn()
 
@@ -56,6 +62,7 @@ class LoginFragment : Fragment() {
         viewModel.successfullLogin.observe(viewLifecycleOwner){
             if (it== true){
            //   Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
+
                 if( (viewModel.user.value?.userType).equals("seller")){
                     view.findNavController().navigate(R.id.action_loginFragment_to_sellerActivity)
                 }
