@@ -11,7 +11,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.e_commerceapp.Authentication.SignUp.Repo.SignupRepoImpl
 import com.example.e_commerceapp.Authentication.SignUp.viewmodel.SignupViewModel
+import com.example.e_commerceapp.Authentication.SignUp.viewmodel.SignupViewModelFactory
+import com.example.e_commerceapp.Network.APIClient
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.FragmentSignupBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -34,7 +37,7 @@ class SignupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        gettingViewModelReady(requireContext())
+        gettingViewModelReady()
         viewModel.InitFirebase()
 
        binding.apply {
@@ -42,9 +45,14 @@ class SignupFragment : Fragment() {
                isValidData(inputEmail.text.toString().trim(),inputUsername.text.toString().trim(),
                    inputMobile.text.toString().trim(),inputPassword.text.toString().trim()) } }
 
-  binding.textView.setOnClickListener(){
+  binding.textView2.setOnClickListener(){
       findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
   }
+
+        binding.textView.setOnClickListener(){
+            findNavController().navigate(R.id.action_signupFragment_to_signupSellerFragment)
+        }
+
 
 
 viewModel.successfullRegister.observe(viewLifecycleOwner){
@@ -69,12 +77,9 @@ viewModel.successfullRegister.observe(viewLifecycleOwner){
 
 
 
-    private fun gettingViewModelReady(context: Context) {
-        viewModel = ViewModelProvider(this).get(SignupViewModel::class.java)
-//        val loginViewModelFactory = LoginViewModelFactory(
-//            LoginRepoImp(LocalDataSourceImpl(context)) )
-//        loginViewModel =
-//            ViewModelProvider(this, loginViewModelFactory).get(LoginViewModel::class.java)
+    private fun gettingViewModelReady(){
+        val factory = SignupViewModelFactory(SignupRepoImpl(APIClient))
+        viewModel = ViewModelProvider(this,factory)[SignupViewModel::class.java]
     }
 
 

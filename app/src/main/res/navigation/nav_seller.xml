@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_seller"
+    app:startDestination="@id/homeSellerFragment">
+
+    <fragment
+        android:id="@+id/homeSellerFragment"
+        android:name="com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.HomeSellerFragment"
+        android:label="HomeSellerFragment" >
+        <action
+            android:id="@+id/action_homeSellerFragment_to_mangeProductsFragment"
+            app:destination="@id/mangeProductsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mangeProductsFragment"
+        android:name="com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.MangeProductsFragment"
+        android:label="MangeProductsFragment" />
+</navigation>

@@ -1,0 +1,22 @@
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+
+        <layer-list >
+            <item>
+               <color android:color="@color/primary_color"/>
+            </item>
+            <item android:bottom="50dp">
+                <bitmap
+                    android:src="@drawable/blabla" />
+
+            </item>
+        </layer-list>
+
+    </item>
+    <item android:bottom="50dp">
+        <bitmap
+            android:src="@drawable/rectangle" />
+
+    </item>
+</layer-list>

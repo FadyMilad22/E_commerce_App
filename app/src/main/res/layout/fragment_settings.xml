@@ -20,10 +20,11 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userProfileImage"
 android:src="@drawable/user"
+            android:background="@color/onprimary_color"
             android:layout_width="@dimen/_55sdp"
             android:layout_height="@dimen/_55sdp"
             android:layout_marginStart="@dimen/_8sdp"
-            app:civ_border_color="@color/primary_color"
+            app:civ_border_color="@color/onprimary_color"
             app:civ_border_width="1dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="parent"

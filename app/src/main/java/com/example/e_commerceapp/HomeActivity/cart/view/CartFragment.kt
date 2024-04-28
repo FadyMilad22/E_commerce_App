@@ -6,14 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.e_commerceapp.HomeActivity.Favourites.Repo.cartRepoImpl
+
 import com.example.e_commerceapp.HomeActivity.cart.viewModel.CartViewModel
+import com.example.e_commerceapp.HomeActivity.cart.viewModel.CartViewModelFactory
+import com.example.e_commerceapp.Network.APIClient
 import com.example.e_commerceapp.R
 
 class CartFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CartFragment()
-    }
+
 
     private lateinit var viewModel: CartViewModel
 
@@ -21,13 +23,18 @@ class CartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        gettingViewModelReady()
         return inflater.inflate(R.layout.fragment_cart, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CartViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
+
+
+    private fun gettingViewModelReady(){
+        val factory = CartViewModelFactory(cartRepoImpl(APIClient))
+        viewModel = ViewModelProvider(this,factory)[CartViewModel::class.java]
+    }
 }
