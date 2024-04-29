@@ -1,15 +1,16 @@
 package com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view
 
-import androidx.lifecycle.ViewModelProvider
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-
-
 import com.example.e_commerceapp.HomeActivity.cart.viewModel.HomeSellerViewModel
 import com.example.e_commerceapp.HomeActivity.cart.viewModel.HomeSellerViewModelFactory
 import com.example.e_commerceapp.Network.APIClient
@@ -31,12 +32,34 @@ private lateinit var binding : FragmentHomeSellerBinding
         gettingViewModelReady()
 
 
+
+
         binding =  FragmentHomeSellerBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        val token: String? = requireActivity().intent.getStringExtra("token")
+
+
+        if (token != null) {
+
+
+            viewModel.setStringData(token)
+         Log.i("Fady1", token)
+        }
+
+//        val viewModelShared: SharedViewModel by lazy {
+//            ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+//        }
+//        viewModelShared.token.observe(viewLifecycleOwner) { data ->
+//            // Now you have your string data from the Activity
+//
+//        }
+
 
         binding.button1.setOnClickListener(){
 
@@ -45,9 +68,15 @@ private lateinit var binding : FragmentHomeSellerBinding
 
 
 
-        binding.button2.setOnClickListener(){
+// Observe the string data
 
-findNavController().navigate(R.id.action_homeSellerFragment_to_mangeProductsFragment)
+
+        binding.button2.setOnClickListener(){
+            val action = HomeSellerFragmentDirections.actionHomeSellerFragmentToMangeProductsFragment(viewModel.token.value)
+            Navigation.findNavController(view).navigate(action)
+
+//
+//findNavController().navigate(R.id.action_homeSellerFragment_to_mangeProductsFragment)
         }
 
         binding.button3.setOnClickListener(){
@@ -65,4 +94,7 @@ findNavController().navigate(R.id.action_homeSellerFragment_to_mangeProductsFrag
         val factory = HomeSellerViewModelFactory(HomeSellerRepoImpl(APIClient))
         viewModel = ViewModelProvider(this,factory)[HomeSellerViewModel::class.java]
     }
+
+
+
 }

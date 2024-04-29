@@ -55,10 +55,16 @@
         <action
             android:id="@+id/action_signupSellerFragment_to_signupFragment"
             app:destination="@id/signupFragment" />
+
     </fragment>
     <activity
         android:id="@+id/sellerActivity"
         android:name="com.example.e_commerceapp.SellerAcvtivity.SellerActivity"
         android:label="activity_seller"
-        tools:layout="@layout/activity_seller" />
+        tools:layout="@layout/activity_seller" >
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+    </activity>
 </navigation>

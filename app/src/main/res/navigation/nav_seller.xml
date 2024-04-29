@@ -15,5 +15,25 @@
     <fragment
         android:id="@+id/mangeProductsFragment"
         android:name="com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.MangeProductsFragment"
-        android:label="MangeProductsFragment" />
+        android:label="MangeProductsFragment" >
+        <action
+            android:id="@+id/action_mangeProductsFragment_to_addProductsSellerFragment"
+            app:destination="@id/addProductsSellerFragment" />
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductsSellerFragment"
+        android:name="com.example.e_commerceapp.SellerAcvtivity.AddProductsSeller.view.AddProductsSellerFragment"
+        android:label="AddProductsSellerFragment" >
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_addProductsSellerFragment_to_mangeProductsFragment"
+            app:destination="@id/mangeProductsFragment" />
+    </fragment>
 </navigation>
