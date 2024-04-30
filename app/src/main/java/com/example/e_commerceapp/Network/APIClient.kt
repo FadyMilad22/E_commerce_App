@@ -11,6 +11,7 @@ import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
 import com.example.e_commerceapp.Model.TokenHolder
+import com.example.e_commerceapp.Model.UserDataResponse
 import com.example.e_commerceapp.Model.UserLoginResponse
 import retrofit2.Response
 
@@ -66,5 +67,9 @@ object APIClient: RemoteDataSource {
         return APIHelper.retrofit.create(APIService::class.java).userLogin(loginResquest)
     }
 
+
+    override suspend fun getUserData(userType :String,token: String): Response<UserDataResponse> {
+        return APIHelper.retrofit.create(APIService::class.java).getUserData(userType,"Bearer "+token)
+    }
 
 }

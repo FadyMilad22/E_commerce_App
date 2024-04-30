@@ -9,6 +9,7 @@ import com.example.e_commerceapp.Model.Customer
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
+import com.example.e_commerceapp.Model.UserDataResponse
 import com.example.e_commerceapp.Model.UserLoginResponse
 import retrofit2.Response
 
@@ -25,5 +26,5 @@ interface RemoteDataSource {
     suspend fun updateItem(itemID : Int, token : String , item : AddItem) : Response<AuthResponse>
     suspend fun getItemsofthisSeller(token: String): Response<ItemsOfCategoryResponse>
     suspend fun loginUser(loginResquest : LoginRequest): Response<UserLoginResponse>
-
+    suspend fun getUserData(userType :String,token: String): Response<UserDataResponse>
 }

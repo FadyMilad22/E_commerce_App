@@ -10,6 +10,7 @@ import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
 import com.example.e_commerceapp.Model.TokenHolder
+import com.example.e_commerceapp.Model.UserDataResponse
 import com.example.e_commerceapp.Model.UserLoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -77,5 +78,9 @@ interface APIService {
     @POST("users/login")
     suspend fun userLogin(@Body uid: LoginRequest): Response<UserLoginResponse>
 
+
+
+    @GET("users/current/{userType}")
+    suspend fun getUserData(@Path("userType") name : String,@Header("Authorization") token: String) : Response<UserDataResponse>
 
 }
