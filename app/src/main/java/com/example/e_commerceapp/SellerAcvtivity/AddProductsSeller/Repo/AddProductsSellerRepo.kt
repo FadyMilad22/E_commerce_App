@@ -9,7 +9,7 @@ import retrofit2.Response
 
 interface AddProductsSellerRepo {
 
-    suspend fun editItem(itemID : Int,token : String,item : Item): Response<AuthResponse>
+    suspend fun editItem(itemID : Int,token : String,item : AddItem): Response<AuthResponse>
     suspend fun deleteItem(itemID : Int,token : String): Response<AuthResponse>
 
     suspend fun AddItem(item : AddItem, token : String): Response<AddingItemResponse>

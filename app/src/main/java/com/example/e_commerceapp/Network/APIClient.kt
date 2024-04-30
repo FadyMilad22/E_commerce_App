@@ -44,16 +44,16 @@ object APIClient: RemoteDataSource {
     }
 
     override suspend fun deleteItem(itemID: Int, token: String): Response<AuthResponse> {
-        return APIHelper.retrofit.create(APIService::class.java).deleteItem(itemID, token)
+        return APIHelper.retrofit.create(APIService::class.java).deleteItem(itemID, "Bearer "+token)
 
     }
 
     override suspend fun updateItem(
         itemID: Int,
         token: String,
-        item: Item
+        item: AddItem
     ): Response<AuthResponse> {
-        return APIHelper.retrofit.create(APIService::class.java).editItem(itemID, token, item)
+        return APIHelper.retrofit.create(APIService::class.java).editItem(itemID, "Bearer "+token, item)
 
     }
 

@@ -20,24 +20,47 @@ class AddProductsSellerViewModel (private val addProductsSellerRepo: AddProducts
     private var _successfullAdding = MutableLiveData<Boolean?>(null)
     val successfullAdding : LiveData<Boolean?> =_successfullAdding
 
-fun addProduct(item : AddItem, token : String){
 
-    viewModelScope.launch {
 
-       val response= addProductsSellerRepo.AddItem(item,token)
-        Log.i("Fady13","The response  : ${response.isSuccessful} ")
-        Log.i("Fady13","The response  : ${response.code()} ")
-        if (response.isSuccessful){
+    private var _successfullDelete = MutableLiveData<Boolean?>(null)
+    val successfullDelete : LiveData<Boolean?> =_successfullDelete
 
-            _successfullAdding.value= true
+
+
+    fun addProduct(item : AddItem, token : String) {
+
+        viewModelScope.launch {
+
+            val response = addProductsSellerRepo.AddItem(item, token)
+            Log.i("Fady13", "The Adding response  : ${response.isSuccessful} ")
+            Log.i("Fady13", "The Adding response  : ${response.code()} ")
+            if (response.isSuccessful) {
+
+                _successfullAdding.value = true
+
+            }
 
         }
 
     }
 
+    fun deleteProduct(itemID : Int ,token :String ){
+
+        viewModelScope.launch {
+            val response = addProductsSellerRepo.deleteItem(itemID, token)
+            Log.i("Fady13","The Delete response  : ${response.isSuccessful} ")
+            Log.i("Fady13","The Delete response  : ${response.code()} ")
+            if (response.isSuccessful){
+
+                _successfullDelete.value = true
+            }
+        }
 
 
-}
+
+
+
+    }
 
 
 

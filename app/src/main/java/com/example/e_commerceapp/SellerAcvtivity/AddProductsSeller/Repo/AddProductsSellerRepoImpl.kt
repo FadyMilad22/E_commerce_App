@@ -22,7 +22,7 @@ class AddProductsSellerRepoImpl(val remoteDataSource: RemoteDataSource,
         return remoteDataSource.deleteItem(itemID,token)
     }
 
-    override suspend fun editItem(itemID : Int,token : String,item : Item): Response<AuthResponse> {
+    override suspend fun editItem(itemID : Int,token : String,item : AddItem): Response<AuthResponse> {
         return remoteDataSource.updateItem(itemID,token,item)
     }
 

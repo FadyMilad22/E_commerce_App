@@ -67,7 +67,7 @@ class LoginFragment : Fragment() {
                     //Navigation.findNavController(view).navigate(action)
                     //view.findNavController().navigate(R.id.action_loginFragment_to_sellerActivity)
 
-
+                    MaterialAlertDialogBuilder(requireContext()).setTitle("Logging you IN")
                     val intent = Intent(this.context, SellerActivity::class.java)
                     intent.putExtra("token", viewModel.user.value?.accessToken.toString()) //data is a string variable holding some value.
                     startActivity(intent)

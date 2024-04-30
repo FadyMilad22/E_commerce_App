@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.e_commerceapp.Model.AddItem
@@ -18,6 +19,7 @@ import com.example.e_commerceapp.R
 import com.example.e_commerceapp.SellerAcvtivity.AddProductsSeller.Repo.AddProductsSellerRepoImpl
 import com.example.e_commerceapp.SellerAcvtivity.AddProductsSeller.viewModel.AddProductsSellerViewModel
 import com.example.e_commerceapp.SellerAcvtivity.AddProductsSeller.viewModel.AddProductsSellerViewModelFactory
+import com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.MangeProductsFragmentDirections
 import com.example.e_commerceapp.databinding.FragmentAddProductsSellerBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -56,8 +58,12 @@ private lateinit var binding:FragmentAddProductsSellerBinding
 
     viewModel.successfullAdding.observe(viewLifecycleOwner){
         if(it == true){
-        MaterialAlertDialogBuilder(requireContext()).setTitle("Product added Successfully")
-        findNavController().navigate(R.id.action_addProductsSellerFragment_to_mangeProductsFragment)}
+            val action = AddProductsSellerFragmentDirections.actionAddProductsSellerFragmentToMangeProductsFragment(args.token!!)
+            Navigation.findNavController(view).navigate(action)
+
+            Log.i("Fady4","It's here")
+           MaterialAlertDialogBuilder(requireContext()).setTitle("Product added Successfully")
+        }
     }
 
     }

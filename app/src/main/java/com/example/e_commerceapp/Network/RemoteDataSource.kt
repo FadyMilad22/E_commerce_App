@@ -22,7 +22,7 @@ interface RemoteDataSource {
     suspend fun getItemsByName(name: String): Response<ItemsOfCategoryResponse>
     suspend fun AddItem(item : AddItem, token : String) : Response<AddingItemResponse>
     suspend fun deleteItem(itemID : Int, token : String) : Response<AuthResponse>
-    suspend fun updateItem(itemID : Int, token : String , item : Item) : Response<AuthResponse>
+    suspend fun updateItem(itemID : Int, token : String , item : AddItem) : Response<AuthResponse>
     suspend fun getItemsofthisSeller(token: String): Response<ItemsOfCategoryResponse>
     suspend fun loginUser(loginResquest : LoginRequest): Response<UserLoginResponse>
 

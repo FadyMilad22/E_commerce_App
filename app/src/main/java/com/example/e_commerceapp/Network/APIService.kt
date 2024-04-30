@@ -66,7 +66,7 @@ interface APIService {
 
 
     @PUT("sellers/item/{Item_ID}")
-    suspend fun editItem( @Path("Item_ID") itemId: Int, @Header("Authorization") token: String, @Body itemData: Item): Response<AuthResponse>
+    suspend fun editItem( @Path("Item_ID") itemId: Int, @Header("Authorization") token: String, @Body itemData: AddItem): Response<AuthResponse>
 
 
     @GET("sellers/item")

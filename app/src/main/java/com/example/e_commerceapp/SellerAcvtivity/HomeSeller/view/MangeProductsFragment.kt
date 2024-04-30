@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -87,10 +88,17 @@ class MangeProductsFragment : Fragment() {
 
 
     private fun addElementsSearch(data: List<Item>, recyclerView: RecyclerView){
-        recyclerView.adapter = SellerHomeAdapter(data, viewModel )
+        recyclerView.adapter = SellerHomeAdapter(data, viewModel ){ clickedProduct -> onProductClick(clickedProduct) }
 
         recyclerView.layoutManager = GridLayoutManager(requireContext(),2,
             RecyclerView.VERTICAL,false)
+    }
+
+    private fun onProductClick(clickedItem: Item) {
+        val action = MangeProductsFragmentDirections.actionMangeProductsFragmentToProductsDetailsSellerFragment (Name = clickedItem.Name,
+            Price = clickedItem.Price.toFloat(), Quantity = clickedItem.Quantity, ItemID = clickedItem.Item_ID!!,
+            Description = clickedItem.Description, URL = clickedItem.URL, Category = clickedItem.categories, token = args.token)
+        findNavController().navigate(action)
     }
 
     }

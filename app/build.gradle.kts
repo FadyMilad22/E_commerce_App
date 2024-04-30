@@ -77,8 +77,8 @@ dependencies {
 
     // Feature module Support
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
-
-
+//
+//    implementation ("com.borjabravo:readmoretextview:2.1.0")
 
         implementation ("de.hdodenhof:circleimageview:3.1.0")
 

@@ -1,7 +1,7 @@
 package com.example.e_commerceapp.Model
 
 data class Item(
-    val Categories: String,
+    val categories: String,
     val Description: String,
     val I_UserID: String?,
     val Item_ID: Int?,
