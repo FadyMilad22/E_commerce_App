@@ -15,5 +15,71 @@
     <fragment
         android:id="@+id/mangeProductsFragment"
         android:name="com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.MangeProductsFragment"
-        android:label="MangeProductsFragment" />
+        android:label="MangeProductsFragment" >
+        <action
+            android:id="@+id/action_mangeProductsFragment_to_addProductsSellerFragment"
+            app:destination="@id/addProductsSellerFragment" />
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_mangeProductsFragment_to_productsDetailsSellerFragment"
+            app:destination="@id/productsDetailsSellerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductsSellerFragment"
+        android:name="com.example.e_commerceapp.SellerAcvtivity.AddProductsSeller.view.AddProductsSellerFragment"
+        android:label="AddProductsSellerFragment" >
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_addProductsSellerFragment_to_mangeProductsFragment"
+            app:destination="@id/mangeProductsFragment"
+            app:popUpTo="@id/homeSellerFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/productsDetailsSellerFragment"
+        android:name="com.example.e_commerceapp.SellerAcvtivity.AddProductsSeller.view.ProductsDetailsSellerFragment"
+        android:label="ProductsDetailsSellerFragment" >
+        <argument
+            android:name="Name"
+            app:argType="string"
+            android:defaultValue="N/A" />
+        <argument
+            android:name="Price"
+            app:argType="float"
+            android:defaultValue="0.0" />
+        <argument
+            android:name="Quantity"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="ItemID"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="Description"
+            app:argType="string"
+            android:defaultValue="N/A" />
+        <argument
+            android:name="URL"
+            app:argType="string"
+            android:defaultValue="N/A" />
+        <argument
+            android:name="Category"
+            app:argType="string"
+            android:defaultValue="N/A" />
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_productsDetailsSellerFragment_to_mangeProductsFragment"
+            app:destination="@id/mangeProductsFragment"
+            app:popUpTo="@id/mangeProductsFragment" />
+    </fragment>
 </navigation>

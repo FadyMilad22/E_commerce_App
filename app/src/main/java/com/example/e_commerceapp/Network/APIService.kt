@@ -1,5 +1,6 @@
 package com.example.e_commerceapp.Network
 
+import com.example.e_commerceapp.Model.AddItem
 import com.example.e_commerceapp.Model.AddingItemResponse
 import com.example.e_commerceapp.Model.AuthResponse
 import com.example.e_commerceapp.Model.CategoriesResponse
@@ -8,6 +9,7 @@ import com.example.e_commerceapp.Model.Customer
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
+import com.example.e_commerceapp.Model.TokenHolder
 import com.example.e_commerceapp.Model.UserLoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -55,7 +57,7 @@ interface APIService {
     @POST("users/sellers/register")
     suspend fun createSeller(@Body user: Seller): Response<AuthResponse>
     @POST("sellers/item")
-    suspend fun addItem(@Body item: Item, @Header("Authorization") token: String): Response<AddingItemResponse>
+    suspend fun addItem(@Body item: AddItem, @Header("Authorization") token: String): Response<AddingItemResponse>
 
 
     @DELETE("sellers/item/{Item_ID}")
@@ -64,12 +66,11 @@ interface APIService {
 
 
     @PUT("sellers/item/{Item_ID}")
-    suspend fun editItem( @Path("Item_ID") itemId: Int, @Header("Authorization") token: String, @Body itemData: Item): Response<AuthResponse>
+    suspend fun editItem( @Path("Item_ID") itemId: Int, @Header("Authorization") token: String, @Body itemData: AddItem): Response<AuthResponse>
 
 
     @GET("sellers/item")
-    suspend fun getItemsOfthisSeller( @Header("Authorization") token: String)  : Response<ItemsOfCategoryResponse>
-
+    suspend fun getItemsOfthisSeller(@Header("Authorization") token: String): Response<ItemsOfCategoryResponse>
 // User functionality
 
 

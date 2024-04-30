@@ -1,6 +1,7 @@
 package com.example.e_commerceapp.Network
 
 
+import com.example.e_commerceapp.Model.AddItem
 import com.example.e_commerceapp.Model.AddingItemResponse
 import com.example.e_commerceapp.Model.AuthResponse
 import com.example.e_commerceapp.Model.CategoriesResponse
@@ -9,6 +10,7 @@ import com.example.e_commerceapp.Model.Customer
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
+import com.example.e_commerceapp.Model.TokenHolder
 import com.example.e_commerceapp.Model.UserLoginResponse
 import retrofit2.Response
 
@@ -36,28 +38,27 @@ object APIClient: RemoteDataSource {
         return APIHelper.retrofit.create(APIService::class.java).getCategories()
     }
 
-    override suspend fun AddItem(item: Item, token: String): Response<AddingItemResponse> {
-        return APIHelper.retrofit.create(APIService::class.java).addItem(item, token)
+    override suspend fun AddItem(item: AddItem, token: String): Response<AddingItemResponse> {
+        return APIHelper.retrofit.create(APIService::class.java).addItem(item,"Bearer "+token)
 
     }
 
     override suspend fun deleteItem(itemID: Int, token: String): Response<AuthResponse> {
-        return APIHelper.retrofit.create(APIService::class.java).deleteItem(itemID, token)
+        return APIHelper.retrofit.create(APIService::class.java).deleteItem(itemID, "Bearer "+token)
 
     }
 
     override suspend fun updateItem(
         itemID: Int,
         token: String,
-        item: Item
+        item: AddItem
     ): Response<AuthResponse> {
-        return APIHelper.retrofit.create(APIService::class.java).editItem(itemID, token, item)
+        return APIHelper.retrofit.create(APIService::class.java).editItem(itemID, "Bearer "+token, item)
 
     }
 
     override suspend fun getItemsofthisSeller(token: String): Response<ItemsOfCategoryResponse> {
-        return APIHelper.retrofit.create(APIService::class.java).getItemsOfthisSeller(token)
-
+        return APIHelper.retrofit.create(APIService::class.java).getItemsOfthisSeller("Bearer "+token)
     }
 
     override suspend fun loginUser(loginResquest : LoginRequest ): Response<UserLoginResponse> {

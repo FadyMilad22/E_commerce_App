@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <!-- Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:text="Add a New Product"
+                android:textColor="@color/onprimary_color"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/primary_color"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+                android:background="@drawable/rounded_bg"
+                android:hint="Name"
+                android:layout_marginBottom="16dp"
+              >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textStyle="bold"
+                    android:id="@+id/name"
+                    android:textColor="#FF006878" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Description -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/primary_color"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+                android:background="@drawable/rounded_bg"
+                android:hint="Description"
+                android:layout_marginBottom="16dp"
+              >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textStyle="bold"
+                    android:id="@+id/descripe"
+                    android:textColor="#FF006878" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Price -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:textColorHint="@color/primary_color"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+                android:background="@drawable/rounded_bg"
+                android:hint="Price"
+                android:layout_marginBottom="16dp"
+              >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:textStyle="bold"
+                    android:id="@+id/price"
+                    android:textColor="#FF006878" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Quantity -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/primary_color"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+                android:background="@drawable/rounded_bg"
+                android:hint="Quantity"
+                android:layout_marginBottom="16dp"
+              >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textStyle="bold"
+                    android:id="@+id/quantity"
+                    android:textColor="#FF006878" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- URL -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+                android:background="@drawable/rounded_bg"
+                android:hint="Img URL"
+                android:textColorHint="@color/primary_color"
+                android:layout_marginBottom="16dp"
+             >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textUri"
+                    android:textStyle="bold"
+                    android:id="@+id/imgUrl"
+                    android:textColor="#FF006878" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Categories -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense"
+                android:background="@drawable/rounded_bg"
+                android:hint="Categories"
+                android:layout_marginBottom="16dp"
+                android:textColorHint="@color/primary_color"
+               >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/catigories"
+                    android:inputType="text"
+                    android:textStyle="bold"
+                    android:textColor="#FF006878" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:id="@+id/addbtn"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:background="@drawable/rounded_bg"
+                android:textColor="#FF006878"
+                android:layout_marginTop="16dp"/>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

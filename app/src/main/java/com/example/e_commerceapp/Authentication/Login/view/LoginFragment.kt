@@ -1,26 +1,25 @@
 package com.example.e_commerceapp.Authentication.Login.view
 
-import android.content.Context
-import androidx.lifecycle.ViewModelProvider
+import android.R.attr.data
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.viewModelScope
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.e_commerceapp.Authentication.Login.Repo.LoginRepoImpl
 import com.example.e_commerceapp.Authentication.Login.viewmodel.LoginViewModel
 import com.example.e_commerceapp.Authentication.Login.viewmodel.LoginViewModelFactory
-import com.example.e_commerceapp.Authentication.SignUp.viewmodel.SignupViewModel
 import com.example.e_commerceapp.Network.APIClient
 import com.example.e_commerceapp.R
+import com.example.e_commerceapp.SellerAcvtivity.SellerActivity
 import com.example.e_commerceapp.databinding.FragmentLoginBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+
 
 class LoginFragment : Fragment() {
 
@@ -61,13 +60,21 @@ class LoginFragment : Fragment() {
 
         viewModel.successfullLogin.observe(viewLifecycleOwner){
             if (it== true){
-           //   Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
+              Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
 
                 if( (viewModel.user.value?.userType).equals("seller")){
-                    view.findNavController().navigate(R.id.action_loginFragment_to_sellerActivity)
+                    //val action = LoginFragmentDirections.actionLoginFragmentToSellerActivity()
+                    //Navigation.findNavController(view).navigate(action)
+                    //view.findNavController().navigate(R.id.action_loginFragment_to_sellerActivity)
+
+                    MaterialAlertDialogBuilder(requireContext()).setTitle("Logging you IN")
+                    val intent = Intent(this.context, SellerActivity::class.java)
+                    intent.putExtra("token", viewModel.user.value?.accessToken.toString()) //data is a string variable holding some value.
+                    startActivity(intent)
+
                 }
                 else {
-                    Toast.makeText(context, "Welcome ${viewModel.user.value?.userType}", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "Welcome ${viewModel.user.value?.userType}", Toast.LENGTH_SHORT).show()
                 view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)}
 
 

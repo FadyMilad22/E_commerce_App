@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
-
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -77,8 +77,8 @@ dependencies {
 
     // Feature module Support
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
-
-
+//
+//    implementation ("com.borjabravo:readmoretextview:2.1.0")
 
         implementation ("de.hdodenhof:circleimageview:3.1.0")
 
