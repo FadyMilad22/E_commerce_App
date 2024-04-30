@@ -17,6 +17,7 @@ import com.example.e_commerceapp.SellerAcvtivity.AddProductsSeller.Repo.AddProdu
 import com.example.e_commerceapp.SellerAcvtivity.AddProductsSeller.viewModel.AddProductsSellerViewModel
 import com.example.e_commerceapp.SellerAcvtivity.AddProductsSeller.viewModel.AddProductsSellerViewModelFactory
 import com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.MangeProductsFragmentArgs
+import com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.MangeProductsFragmentDirections
 import com.example.e_commerceapp.databinding.FragmentMangeProductsBinding
 import com.example.e_commerceapp.databinding.FragmentProductsDetailsSellerBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -66,7 +67,17 @@ button2.setOnClickListener(){
 
 }
 
+button3.setOnClickListener(){
 
+
+
+    val action = ProductsDetailsSellerFragmentDirections.actionProductsDetailsSellerFragmentToEditProductFragment(Name = args.Name,
+        Price = args.Price, Quantity = args.Quantity, ItemID = args.ItemID,
+        Description = args.Description, URL = args.URL, Category = args.Category, token = args.token)
+    Navigation.findNavController(view).navigate(action)
+
+
+}
 
 
 
