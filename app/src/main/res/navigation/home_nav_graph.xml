@@ -24,7 +24,17 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.e_commerceapp.HomeActivity.Settiings.view.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_chargeBalanceFragment"
+            app:destination="@id/chargeBalanceFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.example.e_commerceapp.HomeActivity.cart.view.CartFragment"
@@ -102,4 +112,45 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.example.e_commerceapp.HomeActivity.Settiings.view.AddAddressFragment"
+        android:label="fragment_add_address"
+        tools:layout="@layout/fragment_add_address" >
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="address"
+            app:argType="string"
+            android:defaultValue="N/A" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="N/A" />
+    </fragment>
+    <fragment
+        android:id="@+id/chargeBalanceFragment"
+        android:name="com.example.e_commerceapp.HomeActivity.Settiings.view.ChargeBalanceFragment"
+        android:label="fragment_charge_balance"
+        tools:layout="@layout/fragment_charge_balance" >
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="currentBalance"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="N/A" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.e_commerceapp.HomeActivity.Settiings.view.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>

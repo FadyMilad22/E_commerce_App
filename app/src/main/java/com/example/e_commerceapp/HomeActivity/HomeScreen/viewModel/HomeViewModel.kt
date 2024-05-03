@@ -18,8 +18,6 @@ class HomeViewModel(private val homeRepo : HomeRepo) : ViewModel() {
     val tokenC : LiveData<String?> =_tokenC
 
 
-    private var _userD = MutableLiveData<User>()
-    val userD : LiveData<User> = _userD
 
 
     private val _exclusiveDeals = MutableLiveData<List<Item>>()
@@ -61,23 +59,7 @@ class HomeViewModel(private val homeRepo : HomeRepo) : ViewModel() {
         }
 
 
-    fun getCustomerData(token :String){
-        viewModelScope.launch {
 
-            val response=  homeRepo.getUserData(token.trim())
-            Log.i("Fady122","Is Response User Data ? ${token} ")
-            Log.i("Fady122","Is Response Successful ?${response.isSuccessful} ")
-            Log.i("Fady122","Is Response code ?${response.code()} ")
-            Log.i("Fady122","Is Response body ?${response.body()} ")
-
-            if (response.isSuccessful){
-
-                _userD.value = response.body()?.user
-            }
-
-        }
-
-    }
 
 
 }

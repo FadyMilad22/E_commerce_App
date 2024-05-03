@@ -25,9 +25,14 @@ class cartRepoImpl(val remoteDataSource: RemoteDataSource,
 
     override suspend fun deleteitem(itemID : Int,token : String) : Response<AddItemToCartResponse> {
         return remoteDataSource.deleteItemFromCart(itemID, token)
+    }
 
+
+    override suspend fun confirmOrder(token: String): Response<AuthResponse> {
+        return remoteDataSource.confirmOrder(token)
     }
 
 
 
-                 }
+
+}

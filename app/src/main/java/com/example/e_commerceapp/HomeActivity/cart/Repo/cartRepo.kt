@@ -14,5 +14,6 @@ interface cartRepo {
 
     suspend fun deleteitem(itemID : Int,token : String) : Response<AddItemToCartResponse>
 
+    suspend fun confirmOrder(token: String): Response<AuthResponse>
 
 }

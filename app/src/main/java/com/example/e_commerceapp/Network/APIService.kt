@@ -3,10 +3,14 @@ package com.example.e_commerceapp.Network
 import com.example.e_commerceapp.Model.AddItem
 import com.example.e_commerceapp.Model.AddItemToCartResponse
 import com.example.e_commerceapp.Model.AddingItemResponse
+import com.example.e_commerceapp.Model.Address
+import com.example.e_commerceapp.Model.AddressResponse
 import com.example.e_commerceapp.Model.AuthResponse
+import com.example.e_commerceapp.Model.BalanceChargeResponse
 import com.example.e_commerceapp.Model.Cart
 import com.example.e_commerceapp.Model.CartItem
 import com.example.e_commerceapp.Model.CategoriesResponse
+import com.example.e_commerceapp.Model.CharingBalance
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.Customer
 import com.example.e_commerceapp.Model.Item
@@ -103,6 +107,19 @@ interface APIService {
 
     @DELETE("customers/orders/")
     suspend fun deleteAllCart( @Header("Authorization") token: String): Response<AuthResponse>
+
+
+
+    @PUT("customers/balance")
+    suspend fun chargeBalance(@Body card : CharingBalance,@Header("Authorization") token: String): Response<BalanceChargeResponse>
+
+
+    @POST("users/customers/addresses")
+    suspend fun addAddress(@Body address : Address,@Header("Authorization") token: String): Response<AddressResponse>
+
+    @POST("customers/orders/checkout/balance/")
+    suspend fun confirmOrder(@Header("Authorization") token: String): Response<AuthResponse>
+
 
 
 

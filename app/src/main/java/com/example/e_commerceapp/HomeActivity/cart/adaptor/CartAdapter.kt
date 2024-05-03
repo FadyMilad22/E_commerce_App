@@ -44,6 +44,7 @@ class CartAdapter(val data:List<Item>,
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 //
+
         holder.textViewTitle.text = data[position].Name
         holder.textViewPrice.text = ((data[position].Price)*(data[position].Quantity)).toString()
         holder.textViewQuantity.text =  data[position].Quantity.toString()
@@ -60,7 +61,7 @@ class CartAdapter(val data:List<Item>,
 
 
         holder.buttonMins.setOnClickListener(){
-
+            Log.i("Fady-","Minus button")
              val cartItem = CartItem(data[position].Item_ID!!, Quantity = (data[position].Quantity-1))
             viewModel.editquantity(cartItem,token)
 
@@ -71,11 +72,17 @@ class CartAdapter(val data:List<Item>,
         }
         holder.buttonplus.setOnClickListener(){
 
+            Log.i("Fady+","blus button")
+            Log.i("Fady+","item ID ${data[position].Item_ID!!}")
+            Log.i("Fady+","Quantitiy ${data[position].Quantity+1}")
             val cartItem = CartItem(data[position].Item_ID!!, Quantity = (data[position].Quantity+1))
             viewModel.editquantity(cartItem,token)
 
             it.isEnabled = false
             holder.buttonMins.isEnabled = false
+
+
+
         }
 
 
@@ -107,10 +114,7 @@ class CartAdapter(val data:List<Item>,
 //            onProductClick(Item)
 //        }
 
-        viewModel.successfulDelete.observe(lifecycleOwner){
-          //  viewModel.getCart(token)
 
-        }
 
         viewModel.successfulEdit.observe(lifecycleOwner){
 

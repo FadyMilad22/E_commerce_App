@@ -53,6 +53,30 @@ class CartFragment : Fragment() {
 
         }
 
+binding.button2.setOnClickListener(){
+
+if(viewModel.cart.value?.order?.Total_payment != null){
+    if (viewModel.cart.value?.order?.Total_payment!! > 0 ){
+    viewModel.confirmOrder(token!!)}}
+
+
+    else{
+    Toast.makeText(context,"First add at least one product to the cart",Toast.LENGTH_SHORT).show()
+
+    }
+
+}
+
+        viewModel.successfulOrder.observe(viewLifecycleOwner){
+            if(it == true ){
+
+                Toast.makeText(context,"Order Confirmed Check you Order's List",Toast.LENGTH_SHORT).show()
+            }else if ( it == false){
+                Toast.makeText(context,"Not Confirmed Check your Balance",Toast.LENGTH_SHORT).show()
+
+            }
+
+        }
 
 
 

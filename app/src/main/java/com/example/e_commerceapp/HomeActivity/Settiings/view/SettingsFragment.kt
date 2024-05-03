@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.e_commerceapp.HomeActivity.Settiings.Repo.SettingsRepoImpl
 import com.example.e_commerceapp.HomeActivity.Settiings.viewModel.SettingsViewModel
 import com.example.e_commerceapp.HomeActivity.Settiings.viewModel.SettingsViewModelFactory
@@ -32,11 +34,57 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.imageView6.setOnClickListener(){
-            viewModel.InitFirebase()
-            viewModel.logout()
-        }
+
+        val token: String? = requireActivity().intent.getStringExtra("token")
+
+
+if (token != null){
+
+    viewModel.getCustomerData(token)
+
+
+}
+
+
+        binding.apply {
+
+                buttonlog.setOnClickListener(){
+                    viewModel.InitFirebase()
+                    viewModel.logout()
+
+                }
+
+viewModel.userD.observe(viewLifecycleOwner){
+
+
+    textView25.text = "Current Balance = ${it.Balance}"
+    textView10.text = "Hi ${it.Username}"
+
+    button1.setOnClickListener(){
+
+        view.findNavController().navigate(R.id.action_settingsFragment_to_aboutFragment)
+
     }
+
+    button2.setOnClickListener(){
+
+        val action = SettingsFragmentDirections.actionSettingsFragmentToAddAddressFragment(token,
+            viewModel.userD.value?.addresses.toString(),viewModel.userD.value?.Username!!)
+        Navigation.findNavController(view).navigate(action)
+    }
+
+    button3.setOnClickListener(){
+
+        val action = SettingsFragmentDirections.actionSettingsFragmentToChargeBalanceFragment(token,viewModel.userD.value?.Balance!!,viewModel.userD.value?.Username!!)
+        Navigation.findNavController(view).navigate(action)
+    }
+
+}
+
+
+
+
+        }}
 
 
 

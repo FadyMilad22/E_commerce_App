@@ -14,8 +14,5 @@ class HomeRepoImpl(val remoteDataSource: RemoteDataSource,
         return remoteDataSource.getItemsOfCategory(category)
     }
 
-    override suspend fun getUserData(token: String): Response<UserDataResponse> {
-        return remoteDataSource.getUserData("customer",token)
-    }
 
 }
