@@ -4,10 +4,14 @@ package com.example.e_commerceapp.Network
 import com.example.e_commerceapp.Model.AddItem
 import com.example.e_commerceapp.Model.AddItemToCartResponse
 import com.example.e_commerceapp.Model.AddingItemResponse
+import com.example.e_commerceapp.Model.Address
+import com.example.e_commerceapp.Model.AddressResponse
 import com.example.e_commerceapp.Model.AuthResponse
+import com.example.e_commerceapp.Model.BalanceChargeResponse
 import com.example.e_commerceapp.Model.Cart
 import com.example.e_commerceapp.Model.CartItem
 import com.example.e_commerceapp.Model.CategoriesResponse
+import com.example.e_commerceapp.Model.CharingBalance
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.Customer
 import com.example.e_commerceapp.Model.Item
@@ -112,5 +116,17 @@ object APIClient: RemoteDataSource {
     }
 
 
+    override suspend fun chargeBalance(card :CharingBalance,token: String): Response<BalanceChargeResponse> {
+        return APIHelper.retrofit.create(APIService::class.java).chargeBalance(card, "Bearer " + token) }
 
-}
+
+    override suspend fun addAddress(address:Address,token: String): Response<AddressResponse> {
+        return APIHelper.retrofit.create(APIService::class.java).addAddress(address, "Bearer " + token) }
+
+
+    override suspend fun confirmOrder(token: String): Response<AuthResponse> {
+        return APIHelper.retrofit.create(APIService::class.java).confirmOrder("Bearer " + token) }
+
+
+
+    }

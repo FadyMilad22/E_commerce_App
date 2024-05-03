@@ -11,5 +11,5 @@ interface HomeRepo {
 //    suspend fun deleteWishlist(wishlist: Wishlist)
 
     suspend fun getItemsofCategory(category : String): Response<ItemsOfCategoryResponse>
-    suspend fun getUserData(token: String): Response<UserDataResponse>
+
 }

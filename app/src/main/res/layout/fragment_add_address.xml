@@ -19,7 +19,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userProfileImage"
-android:src="@drawable/ic_launcher_round"
+            android:src="@drawable/ic_launcher_round"
 
             android:layout_width="@dimen/_55sdp"
             android:layout_height="@dimen/_55sdp"
@@ -66,84 +66,99 @@ android:src="@drawable/ic_launcher_round"
 
 
             <Button
-                android:id="@+id/button1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="about"
-                android:textColor="@color/primary_color"
-                android:textSize="@dimen/_15sdp"
-                app:backgroundTint="@color/grey"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-            <Button
                 android:id="@+id/buttonlog"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="16dp"
-                android:text="LogOut"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginBottom="32dp"
+                android:text="Add Address"
                 android:textColor="@color/primary_color"
                 android:textSize="@dimen/_15sdp"
+
                 app:backgroundTint="@color/grey"
                 app:layout_constraintBottom_toBottomOf="parent"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="Add Delivery Address"
-                android:textColor="@color/primary_color"
-                android:textSize="@dimen/_15sdp"
-                app:backgroundTint="@color/grey"
-                app:layout_constraintBottom_toTopOf="@+id/button1"
-                app:layout_constraintEnd_toEndOf="@+id/button1"
-                app:layout_constraintStart_toStartOf="@+id/button1"
-                app:layout_constraintTop_toBottomOf="@+id/button3"
-                tools:ignore="SpUsage" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="Charge your Balance"
-                android:textColor="@color/primary_color"
-                android:textSize="@dimen/_15sdp"
-                app:backgroundTint="@color/grey"
-                app:layout_constraintBottom_toTopOf="@+id/button2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/button2"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Please Add your Addresss"
+                android:textColor="@color/onprimary_color"
+
+                android:textSize="@dimen/_18sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:text="This Adress qould be Used for your future Orders"
+                android:textColor="@color/md_theme_tertiaryFixedDim"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="@+id/textView25"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView25"
+                app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtEmail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="271dp"
+                android:layout_height="63dp"
+                android:layout_marginTop="16dp"
+                android:hint="Address"
+                android:textColorHint="#A7A7A7"
+                app:boxStrokeColor="#EAEAEE"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView28"
+                app:layout_constraintTop_toBottomOf="@+id/textView28"
+                app:layout_constraintVertical_bias="0.0">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:textColor="#5B5B5B"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 android:text=""
-                app:layout_constraintBottom_toTopOf="@+id/button3"
-                app:layout_constraintEnd_toEndOf="@+id/button3"
-                app:layout_constraintStart_toStartOf="@+id/button3"
-                app:layout_constraintTop_toTopOf="parent"
 
                 android:textColor="@color/onprimary_color"
                 android:textSize="@dimen/_18sdp"
-                />
+                app:layout_constraintBottom_toTopOf="@+id/buttonlog"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/buttonlog" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Curruntly Used Address : "
+                android:textColor="@color/onprimary_color"
+
+                android:textSize="@dimen/_18sdp"
+                app:layout_constraintBottom_toTopOf="@+id/textView31"
+                app:layout_constraintStart_toStartOf="@+id/textView31" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

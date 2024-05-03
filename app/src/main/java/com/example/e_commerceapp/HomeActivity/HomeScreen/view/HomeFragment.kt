@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
 
             viewModel.setStringData(token)
             Log.i("Fady1", token)
-            viewModel.getCustomerData(token)
+
         }
 
         viewModel.getExclusiveDeals()
