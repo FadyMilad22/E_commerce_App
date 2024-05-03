@@ -1,4 +1,4 @@
-package com.example.e_commerceapp.HomeActivity.Favourites.Repo
+package com.example.e_commerceapp.HomeActivity.History.Repo
 
 import com.example.e_commerceapp.Model.AddItemToCartResponse
 import com.example.e_commerceapp.Model.AuthResponse

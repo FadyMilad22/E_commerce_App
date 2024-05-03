@@ -13,6 +13,7 @@ import com.example.e_commerceapp.Model.CategoriesResponse
 import com.example.e_commerceapp.Model.CharingBalance
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.Customer
+import com.example.e_commerceapp.Model.HistoryResponse
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
@@ -119,6 +120,12 @@ interface APIService {
 
     @POST("customers/orders/checkout/balance/")
     suspend fun confirmOrder(@Header("Authorization") token: String): Response<AuthResponse>
+
+
+    @GET("customers/history")
+    suspend fun getHistory(@Header("Authorization") token: String): Response<HistoryResponse>
+
+
 
 
 

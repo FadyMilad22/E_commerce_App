@@ -2,16 +2,9 @@ package com.example.e_commerceapp.HomeActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.e_commerceapp.HomeActivity.Favourites.view.FavsFragment
-import com.example.e_commerceapp.HomeActivity.HomeScreen.view.HomeFragment
-import com.example.e_commerceapp.HomeActivity.Settiings.view.SettingsFragment
-import com.example.e_commerceapp.HomeActivity.ShopScreen.view.ShopFragment
-import com.example.e_commerceapp.HomeActivity.cart.view.CartFragment
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.ActivityHomeBinding
 import com.google.android.material.navigation.NavigationView

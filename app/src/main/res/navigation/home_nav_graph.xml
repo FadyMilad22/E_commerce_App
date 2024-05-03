@@ -50,10 +50,10 @@
             app:launchSingleTop="true" />
     </fragment>
     <fragment
-        android:id="@+id/favsFragment"
-        android:name="com.example.e_commerceapp.HomeActivity.Favourites.view.FavsFragment"
-        android:label="fragment_favs"
-        tools:layout="@layout/fragment_favs" />
+        android:id="@+id/HistoryFragment"
+        android:name="com.example.e_commerceapp.HomeActivity.History.view.HistoryFragment"
+        android:label="fragment_History"
+        tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/shopFragment"
         android:name="com.example.e_commerceapp.HomeActivity.ShopScreen.view.ShopFragment"

@@ -5,10 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.e_commerceapp.HomeActivity.Favourites.Repo.cartRepo
+import com.example.e_commerceapp.HomeActivity.History.Repo.cartRepo
 import com.example.e_commerceapp.Model.Cart
 import com.example.e_commerceapp.Model.CartItem
-import com.example.e_commerceapp.Model.Item
 import kotlinx.coroutines.launch
 
 class CartViewModel (private val cartRepo: cartRepo): ViewModel() {

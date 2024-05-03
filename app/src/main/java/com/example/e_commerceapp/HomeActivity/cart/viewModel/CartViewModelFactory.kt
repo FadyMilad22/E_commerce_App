@@ -2,9 +2,7 @@ package com.example.e_commerceapp.HomeActivity.cart.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.e_commerceapp.HomeActivity.Favourites.Repo.cartRepo
-import com.example.e_commerceapp.HomeActivity.ShopScreen.Repo.ShopRepo
-
+import com.example.e_commerceapp.HomeActivity.History.Repo.cartRepo
 
 
 class CartViewModelFactory(private val cartRepo: cartRepo): ViewModelProvider.Factory {
