@@ -1,6 +1,5 @@
 package com.example.e_commerceapp.HomeActivity.cart.view
 
-import android.nfc.Tag
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,20 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.e_commerceapp.HomeActivity.Favourites.Repo.cartRepoImpl
-import com.example.e_commerceapp.HomeActivity.ShopScreen.adaptor.SearchAdapter
+import com.example.e_commerceapp.HomeActivity.History.Repo.cartRepoImpl
 import com.example.e_commerceapp.HomeActivity.cart.adaptor.CartAdapter
 
 import com.example.e_commerceapp.HomeActivity.cart.viewModel.CartViewModel
 import com.example.e_commerceapp.HomeActivity.cart.viewModel.CartViewModelFactory
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Network.APIClient
-import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.FragmentCartBinding
-import com.example.e_commerceapp.databinding.FragmentShopBinding
 
 class CartFragment : Fragment() {
 

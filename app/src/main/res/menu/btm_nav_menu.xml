@@ -21,11 +21,11 @@
         android:id="@+id/cartFragment"
         android:title="Cart" />
     <item
+        android:id="@+id/HistoryFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/love"
-        android:id="@+id/favsFragment"
-        android:title="Favorites " />
+        android:icon="@drawable/orderhistory"
+        android:title="History" />
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

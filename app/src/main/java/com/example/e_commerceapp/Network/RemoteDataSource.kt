@@ -13,6 +13,7 @@ import com.example.e_commerceapp.Model.CategoriesResponse
 import com.example.e_commerceapp.Model.CharingBalance
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.Customer
+import com.example.e_commerceapp.Model.HistoryResponse
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
@@ -46,4 +47,6 @@ interface RemoteDataSource {
     suspend fun addAddress(address: Address, token: String): Response<AddressResponse>
 
     suspend fun chargeBalance(card : CharingBalance, token: String): Response<BalanceChargeResponse>
+    suspend fun getHistory(token: String): Response<HistoryResponse>
+
 }

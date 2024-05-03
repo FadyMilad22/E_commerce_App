@@ -14,6 +14,7 @@ import com.example.e_commerceapp.Model.CategoriesResponse
 import com.example.e_commerceapp.Model.CharingBalance
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.Customer
+import com.example.e_commerceapp.Model.HistoryResponse
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
@@ -128,5 +129,9 @@ object APIClient: RemoteDataSource {
         return APIHelper.retrofit.create(APIService::class.java).confirmOrder("Bearer " + token) }
 
 
+    override suspend fun getHistory(token: String): Response<HistoryResponse> {
+        return APIHelper.retrofit.create(APIService::class.java).getHistory("Bearer " + token) }
 
-    }
+
+
+}
