@@ -12,7 +12,7 @@ class CartViewModelFactory(private val cartRepo: cartRepo): ViewModelProvider.Fa
         return if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
             CartViewModel(cartRepo) as T
         }else{
-            throw IllegalArgumentException("shopViewModel class not found")
+            throw IllegalArgumentException("cart ViewModel class not found")
         }
     }
 }

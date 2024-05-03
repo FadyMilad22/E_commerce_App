@@ -8,10 +8,18 @@ import androidx.lifecycle.viewModelScope
 import com.example.e_commerceapp.HomeActivity.HomeScreen.Repo.HomeRepo
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
+import com.example.e_commerceapp.Model.User
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class HomeViewModel(private val homeRepo : HomeRepo) : ViewModel() {
+
+    private var _tokenC = MutableLiveData<String?>()
+    val tokenC : LiveData<String?> =_tokenC
+
+
+    private var _userD = MutableLiveData<User>()
+    val userD : LiveData<User> = _userD
 
 
     private val _exclusiveDeals = MutableLiveData<List<Item>>()
@@ -24,6 +32,9 @@ class HomeViewModel(private val homeRepo : HomeRepo) : ViewModel() {
 
 
 
+    fun setStringData(data: String) {
+        _tokenC.value = data
+    }
 
 
 
@@ -50,4 +61,23 @@ class HomeViewModel(private val homeRepo : HomeRepo) : ViewModel() {
         }
 
 
+    fun getCustomerData(token :String){
+        viewModelScope.launch {
+
+            val response=  homeRepo.getUserData(token.trim())
+            Log.i("Fady122","Is Response User Data ? ${token} ")
+            Log.i("Fady122","Is Response Successful ?${response.isSuccessful} ")
+            Log.i("Fady122","Is Response code ?${response.code()} ")
+            Log.i("Fady122","Is Response body ?${response.body()} ")
+
+            if (response.isSuccessful){
+
+                _userD.value = response.body()?.user
+            }
+
+        }
+
     }
+
+
+}

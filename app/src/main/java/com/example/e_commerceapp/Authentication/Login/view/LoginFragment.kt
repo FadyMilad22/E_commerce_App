@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import com.example.e_commerceapp.Authentication.Login.Repo.LoginRepoImpl
 import com.example.e_commerceapp.Authentication.Login.viewmodel.LoginViewModel
 import com.example.e_commerceapp.Authentication.Login.viewmodel.LoginViewModelFactory
+import com.example.e_commerceapp.HomeActivity.HomeActivity
 import com.example.e_commerceapp.Network.APIClient
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.SellerAcvtivity.SellerActivity
@@ -74,9 +75,17 @@ class LoginFragment : Fragment() {
 
                 }
                 else {
-                //Toast.makeText(context, "Welcome ${viewModel.user.value?.userType}", Toast.LENGTH_SHORT).show()
-                view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)}
+                    //Toast.makeText(context, "Welcome ${viewModel.user.value?.userType}", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this.context, HomeActivity::class.java)
+                    intent.putExtra(
+                        "token",
+                        viewModel.user.value?.accessToken.toString()
 
+                    )
+                    //data is a string variable holding some value.
+                    Log.i("Fady","${viewModel.user.value?.userType}")
+                    startActivity(intent)
+                }
 
 
 

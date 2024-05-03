@@ -2,8 +2,11 @@ package com.example.e_commerceapp.Network
 
 
 import com.example.e_commerceapp.Model.AddItem
+import com.example.e_commerceapp.Model.AddItemToCartResponse
 import com.example.e_commerceapp.Model.AddingItemResponse
 import com.example.e_commerceapp.Model.AuthResponse
+import com.example.e_commerceapp.Model.Cart
+import com.example.e_commerceapp.Model.CartItem
 import com.example.e_commerceapp.Model.CategoriesResponse
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.Customer
@@ -68,8 +71,46 @@ object APIClient: RemoteDataSource {
     }
 
 
+
+
     override suspend fun getUserData(userType :String,token: String): Response<UserDataResponse> {
         return APIHelper.retrofit.create(APIService::class.java).getUserData(userType,"Bearer "+token)
     }
+
+
+    override suspend fun addItemtoCart(item: CartItem,token: String): Response<AddItemToCartResponse> {
+       return APIHelper.retrofit.create(APIService::class.java).addItemToCart(item,"Bearer "+token)
+   //  return APIHelper.retrofit.create(APIService::class.java).addItemToCart(item,"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJDVVNUMDAxIiwiaWF0IjoxNzE0Mzk3MTc4LCJleHAiOjQ4NzAxNTcxNzh9.1E6Aprw13VdZngrpUUYn3YSycpdzmGQHVJLYxB4pHOg")
+
+    }
+
+
+    override suspend fun EditItemInCart(item: CartItem,token: String): Response<AddItemToCartResponse> {
+      return APIHelper.retrofit.create(APIService::class.java).EditItemQuantityInCart(item,"Bearer "+token)
+
+   //     return APIHelper.retrofit.create(APIService::class.java).EditItemQuantityInCart(item,"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJDVVNUMDAxIiwiaWF0IjoxNzE0Mzk3MTc4LCJleHAiOjQ4NzAxNTcxNzh9.1E6Aprw13VdZngrpUUYn3YSycpdzmGQHVJLYxB4pHOg")
+
+    }
+
+    override suspend fun deleteItemFromCart(itemID: Int,token: String): Response<AddItemToCartResponse> {
+       return APIHelper.retrofit.create(APIService::class.java).deleteItemFromCart(itemID,"Bearer "+token)
+
+        // return APIHelper.retrofit.create(APIService::class.java).deleteItemFromCart(itemID,"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJDVVNUMDAxIiwiaWF0IjoxNzE0Mzk3MTc4LCJleHAiOjQ4NzAxNTcxNzh9.1E6Aprw13VdZngrpUUYn3YSycpdzmGQHVJLYxB4pHOg")
+
+    }
+
+    override suspend fun GetCart(token: String): Response<Cart> {
+        return APIHelper.retrofit.create(APIService::class.java).getCustomerCart("Bearer "+token)
+
+
+      // return APIHelper.retrofit.create(APIService::class.java).getCustomerCart("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJDVVNUMDAxIiwiaWF0IjoxNzE0Mzk3MTc4LCJleHAiOjQ4NzAxNTcxNzh9.1E6Aprw13VdZngrpUUYn3YSycpdzmGQHVJLYxB4pHOg")
+
+    }
+
+    override suspend fun DeletellCart(token: String): Response<AuthResponse> {
+        return APIHelper.retrofit.create(APIService::class.java).deleteAllCart("Bearer "+token)
+    }
+
+
 
 }

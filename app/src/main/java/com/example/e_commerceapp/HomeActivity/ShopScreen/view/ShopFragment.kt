@@ -2,11 +2,14 @@ package com.example.e_commerceapp.HomeActivity.ShopScreen.view
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_commerceapp.HomeActivity.ShopScreen.viewModel.ShopViewModel
@@ -18,11 +21,14 @@ import com.example.e_commerceapp.HomeActivity.ShopScreen.adaptor.SearchAdapter
 import com.example.e_commerceapp.HomeActivity.ShopScreen.adaptor.ShopAdapter
 import com.example.e_commerceapp.Model.Category
 import com.example.e_commerceapp.Model.Item
+import com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.MangeProductsFragmentDirections
 import com.example.e_commerceapp.databinding.FragmentShopBinding
 
 
 class ShopFragment : Fragment() {
 
+
+ //   private val args : ShopFragmentArgs by navArgs()
 
     private lateinit var viewModel: ShopViewModel
 private lateinit var binding:FragmentShopBinding
@@ -38,6 +44,7 @@ private lateinit var binding:FragmentShopBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val token: String? = requireActivity().intent.getStringExtra("token")
         viewModel.getCategories()
 
         viewModel.categories.observe(viewLifecycleOwner) { categories ->
@@ -52,7 +59,7 @@ private lateinit var binding:FragmentShopBinding
         viewModel.searchItems.observe(viewLifecycleOwner) { items ->
             if (items != null) {
                 //     binding.progresBarAllMeals.visibility = View.GONE
-                addElementsSearch(items, binding.recyclerViewShop)
+                addElementsSearch(items, binding.recyclerViewShop, token!!)
             } else {
                 //   binding.progresBarAllMeals.visibility = View.VISIBLE
             }
@@ -94,9 +101,8 @@ private lateinit var binding:FragmentShopBinding
         recyclerView.layoutManager = GridLayoutManager(requireContext(),2,RecyclerView.VERTICAL,false)
     }
 
-    private fun addElementsSearch(data: List<Item>, recyclerView: RecyclerView){
-        recyclerView.adapter = SearchAdapter(data, viewModel
-        )
+    private fun addElementsSearch(data: List<Item>, recyclerView: RecyclerView ,token:String){
+        recyclerView.adapter = SearchAdapter(data, viewModel){ onProductClick(it,token) }
 
         recyclerView.layoutManager = GridLayoutManager(requireContext(),2,RecyclerView.VERTICAL,false)
     }
@@ -115,6 +121,20 @@ private lateinit var binding:FragmentShopBinding
         if(query != "" && query != " " && query.isNotEmpty()) {viewModel.getSearchResult(query) }
 //   else
 //        viewModel.searchItems.value?.let { addElementsSearch(it,binding.recyclerViewShop) }
-    }}
+    }
+
+    private fun onProductClick(clickedItem: Item,token:String) {
+        Log.i("Fadyitem","true")
+        Log.i("Fadyitem","${token}")
+        val action = ShopFragmentDirections.actionShopFragmentToProductDetailsCustomerFragment (Name = clickedItem.Name,
+            Price = clickedItem.Price.toFloat(), Quantity = clickedItem.Quantity, ItemID = clickedItem.Item_ID!!,
+            Description = clickedItem.Description!!, URL = clickedItem.URL!!, Category = clickedItem.categories!! , token = token) // token = args.token
+        findNavController().navigate(action)
+    }
+
+
+
+}
+
 
 

@@ -9,7 +9,17 @@
         android:id="@+id/homeFragment"
         android:name="com.example.e_commerceapp.HomeActivity.HomeScreen.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsCustomerFragment"
+            app:destination="@id/productDetailsCustomerFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.e_commerceapp.HomeActivity.Settiings.view.SettingsFragment"
@@ -19,7 +29,16 @@
         android:id="@+id/cartFragment"
         android:name="com.example.e_commerceapp.HomeActivity.cart.view.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_cartFragment_to_shopFragment"
+            app:destination="@id/shopFragment"
+            app:launchSingleTop="true" />
+    </fragment>
     <fragment
         android:id="@+id/favsFragment"
         android:name="com.example.e_commerceapp.HomeActivity.Favourites.view.FavsFragment"
@@ -29,5 +48,58 @@
         android:id="@+id/shopFragment"
         android:name="com.example.e_commerceapp.HomeActivity.ShopScreen.view.ShopFragment"
         android:label="fragment_shop"
-        tools:layout="@layout/fragment_shop" />
+        tools:layout="@layout/fragment_shop" >
+
+
+        <action
+            android:id="@+id/action_shopFragment_to_productDetailsCustomerFragment"
+            app:destination="@id/productDetailsCustomerFragment" />
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsCustomerFragment"
+        android:name="com.example.e_commerceapp.HomeActivity.ShopScreen.view.ProductDetailsCustomerFragment"
+        android:label="ProductDetailsCustomerFragment"
+        tools:layout="@layout/fragment_product_details_customer">
+        <argument
+            android:name="Name"
+            app:argType="string"
+            android:defaultValue="N/A" />
+        <argument
+            android:name="Price"
+            app:argType="float"
+            android:defaultValue="0.0" />
+        <argument
+            android:name="Quantity"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="ItemID"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="Description"
+            app:argType="string"
+            android:defaultValue="N/A" />
+        <argument
+            android:name="URL"
+            app:argType="string"
+            android:defaultValue="N/A" />
+        <argument
+            android:name="Category"
+            app:argType="string"
+            android:defaultValue="N/A" />
+        <argument
+            android:name="token"
+            app:argType="string"
+         />
+        <action
+            android:id="@+id/action_productDetailsCustomerFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
 </navigation>

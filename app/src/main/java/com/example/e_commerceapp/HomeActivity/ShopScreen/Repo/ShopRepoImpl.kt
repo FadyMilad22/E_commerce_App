@@ -1,5 +1,7 @@
 package com.example.e_commerceapp.HomeActivity.ShopScreen.Repo
 
+import com.example.e_commerceapp.Model.AddItemToCartResponse
+import com.example.e_commerceapp.Model.CartItem
 import com.example.e_commerceapp.Model.CategoriesResponse
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Network.RemoteDataSource
@@ -31,5 +33,12 @@ override suspend fun getCategories(): Response<CategoriesResponse> {
     override suspend fun getItemByName(name :String): Response<ItemsOfCategoryResponse> {
         return remoteDataSource.getItemsByName(name)
     }
+    override suspend fun AddItemToCart(item: CartItem, token :String): Response<AddItemToCartResponse> {
+        return remoteDataSource.addItemtoCart(item,token)
+
+
+    }
+
+
 
                 }
