@@ -25,6 +25,8 @@ class AddProductsSellerViewModel (private val addProductsSellerRepo: AddProducts
     private var _successfullDelete = MutableLiveData<Boolean?>(null)
     val successfullDelete : LiveData<Boolean?> =_successfullDelete
 
+    private var _successfullEdit = MutableLiveData<Boolean?>(null)
+    val successfullEdit : LiveData<Boolean?> =_successfullEdit
 
 
     fun addProduct(item : AddItem, token : String) {
@@ -61,6 +63,26 @@ class AddProductsSellerViewModel (private val addProductsSellerRepo: AddProducts
 
 
     }
+
+    fun editProduct(itemID: Int,item : AddItem, token : String) {
+
+        viewModelScope.launch {
+
+            val response = addProductsSellerRepo.editItem(item = item,token= token, itemID = itemID)
+            Log.i("Fady13", "The Editing response  : ${response.isSuccessful} ")
+            Log.i("Fady13", "The Editing response  : ${response.code()} ")
+            if (response.isSuccessful) {
+
+                _successfullEdit.value = true
+
+            }
+
+        }
+
+    }
+
+
+
 
 
 

@@ -97,7 +97,7 @@ class MangeProductsFragment : Fragment() {
     private fun onProductClick(clickedItem: Item) {
         val action = MangeProductsFragmentDirections.actionMangeProductsFragmentToProductsDetailsSellerFragment (Name = clickedItem.Name,
             Price = clickedItem.Price.toFloat(), Quantity = clickedItem.Quantity, ItemID = clickedItem.Item_ID!!,
-            Description = clickedItem.Description, URL = clickedItem.URL, Category = clickedItem.categories, token = args.token)
+            Description = clickedItem.Description!!, URL = clickedItem.URL!!, Category = clickedItem.categories!!, token = args.token)
         findNavController().navigate(action)
     }
 

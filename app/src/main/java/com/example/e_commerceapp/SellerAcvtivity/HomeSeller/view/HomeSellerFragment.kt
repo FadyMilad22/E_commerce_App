@@ -34,6 +34,7 @@ private lateinit var binding : FragmentHomeSellerBinding
 
 
 
+
         binding =  FragmentHomeSellerBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -50,6 +51,7 @@ private lateinit var binding : FragmentHomeSellerBinding
 
             viewModel.setStringData(token)
          Log.i("Fady1", token)
+            viewModel.getUserData(token)
         }
 
 //        val viewModelShared: SharedViewModel by lazy {
@@ -75,15 +77,28 @@ private lateinit var binding : FragmentHomeSellerBinding
             val action = HomeSellerFragmentDirections.actionHomeSellerFragmentToMangeProductsFragment(viewModel.token.value)
             Navigation.findNavController(view).navigate(action)
 
-//
-//findNavController().navigate(R.id.action_homeSellerFragment_to_mangeProductsFragment)
-        }
-
-        binding.button3.setOnClickListener(){
-
-            Toast.makeText(context, "Not yet Implemented ", Toast.LENGTH_SHORT).show()
 
         }
+
+        binding.button3.setOnClickListener() {
+
+
+
+            binding.textView17.text = "Your Balance is : ${viewModel.userD.value?.Balance ?: "Loading"} $"
+            // balance  Toast.makeText(context, "Not yet Implemented ", Toast.LENGTH_SHORT).show()
+            binding.textView17.visibility = View.VISIBLE
+
+
+
+        }
+
+binding.buttonlog.setOnClickListener(){
+
+        viewModel.InitFirebase()
+        viewModel.logout()
+
+}
+
 
 
     }

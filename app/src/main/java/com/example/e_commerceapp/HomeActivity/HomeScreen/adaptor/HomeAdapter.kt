@@ -21,7 +21,7 @@ import kotlinx.coroutines.Deferred
 
 class HomeAdapter(val data:List<Item>,
                   val viewModel: HomeViewModel,
-          ) :RecyclerView.Adapter<HomeAdapter.MyViewHolder>() { //        private val onRecipeClick: (Item) -> Unit
+                  private val onProductClick: (Item) -> Unit   ) :RecyclerView.Adapter<HomeAdapter.MyViewHolder>() { //        private val onRecipeClick: (Item) -> Unit
     lateinit var a:Deferred<Unit>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val row =
@@ -50,6 +50,12 @@ class HomeAdapter(val data:List<Item>,
 //        holder.itemView.setOnClickListener {
 //        onRecipeClick(meal)
 //        }
+
+        val Item = data[position]
+
+        holder.itemView.setOnClickListener {
+            onProductClick(Item)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -1,8 +1,11 @@
 package com.example.e_commerceapp.Network
 
 import com.example.e_commerceapp.Model.AddItem
+import com.example.e_commerceapp.Model.AddItemToCartResponse
 import com.example.e_commerceapp.Model.AddingItemResponse
 import com.example.e_commerceapp.Model.AuthResponse
+import com.example.e_commerceapp.Model.Cart
+import com.example.e_commerceapp.Model.CartItem
 import com.example.e_commerceapp.Model.CategoriesResponse
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.Customer
@@ -10,6 +13,7 @@ import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
 import com.example.e_commerceapp.Model.TokenHolder
+import com.example.e_commerceapp.Model.UserDataResponse
 import com.example.e_commerceapp.Model.UserLoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -76,6 +80,31 @@ interface APIService {
 
     @POST("users/login")
     suspend fun userLogin(@Body uid: LoginRequest): Response<UserLoginResponse>
+
+
+
+    @GET("users/current/{userType}")
+    suspend fun getUserData(@Path("userType") name : String,@Header("Authorization") token: String) : Response<UserDataResponse>
+
+
+
+    @POST("customers/orders")
+    suspend fun addItemToCart(@Body item : CartItem,@Header("Authorization") token: String): Response<AddItemToCartResponse>
+
+    @PUT("customers/orders")
+    suspend fun EditItemQuantityInCart(@Body item : CartItem,@Header("Authorization") token: String): Response<AddItemToCartResponse>
+
+
+    @DELETE("customers/orders/{Item_ID}")
+    suspend fun deleteItemFromCart(@Path("Item_ID") itemId: Int , @Header("Authorization") token: String): Response<AddItemToCartResponse>
+
+    @GET("customers/orders/")
+    suspend fun getCustomerCart(@Header("Authorization") token: String): Response<Cart>
+
+    @DELETE("customers/orders/")
+    suspend fun deleteAllCart( @Header("Authorization") token: String): Response<AuthResponse>
+
+
 
 
 }

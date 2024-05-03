@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import com.example.e_commerceapp.HomeActivity.ShopScreen.Repo.ShopRepo
+import com.example.e_commerceapp.Model.CartItem
 import com.example.e_commerceapp.Model.Category
 import com.example.e_commerceapp.Model.Item
 import kotlinx.coroutines.launch
@@ -20,6 +21,9 @@ class ShopViewModel(private val shopRepo: ShopRepo) : ViewModel() {
     val searchItems: LiveData<List<Item>> =  _searchItems
 
 
+    private val _sucssesfulAddingToCart = MutableLiveData<Boolean?>(null)
+    val succesfulAdding: LiveData<Boolean?> =  _sucssesfulAddingToCart
+
 
     fun getCategories(){
         viewModelScope.launch {
@@ -27,12 +31,7 @@ class ShopViewModel(private val shopRepo: ShopRepo) : ViewModel() {
             if(response.isSuccessful){
                 Log.i("Fady1212","Message :${response.body()?.message} \n body : ${response.body()?.categories} \n Code: ${response.code()}")
                 _categories.value=response.body()?.categories
-//          //      _categories.value=  listOf(
-//                    "Technology", "Science", "News", "Sports", "Entertainment",
-//                    "Music", "Travel", "Food", "Fashion", "Business",
-//                    "Health", "Lifestyle", "Education", "Politics", "Environment",
-//                    "Gaming", "Art", "Design", "Photography", "Animals"
-//                )
+
             }
         }
     }
@@ -56,6 +55,27 @@ class ShopViewModel(private val shopRepo: ShopRepo) : ViewModel() {
     }
 
 
+    fun returnFalse(){
+        viewModelScope.launch(){
+            _sucssesfulAddingToCart.value= false
+        }
+    }
+
+    fun addItemToCart(item: CartItem, token :String ){
+        viewModelScope.launch {
+
+            val response = shopRepo.AddItemToCart(item, token)
+            Log.i("Fady5122","Message :${response.body()?.message} \nCode: ${response.code()}")
+            if(response.isSuccessful){
+
+_sucssesfulAddingToCart.value = true
+
+            }
+
+
+        }
+
+    }
 
 
 

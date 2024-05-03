@@ -1,6 +1,7 @@
 package com.example.e_commerceapp.HomeActivity.HomeScreen.Repo
 
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
+import com.example.e_commerceapp.Model.UserDataResponse
 import com.example.e_commerceapp.Network.RemoteDataSource
 import retrofit2.Response
 
@@ -11,6 +12,10 @@ class HomeRepoImpl(val remoteDataSource: RemoteDataSource,
 
     override suspend fun getItemsofCategory(category : String): Response<ItemsOfCategoryResponse> {
         return remoteDataSource.getItemsOfCategory(category)
+    }
+
+    override suspend fun getUserData(token: String): Response<UserDataResponse> {
+        return remoteDataSource.getUserData("customer",token)
     }
 
 }
