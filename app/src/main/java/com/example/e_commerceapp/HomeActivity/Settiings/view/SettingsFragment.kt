@@ -1,5 +1,6 @@
 package com.example.e_commerceapp.HomeActivity.Settiings.view
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import com.example.e_commerceapp.Authentication.AuthenticationActivity
 import com.example.e_commerceapp.HomeActivity.Settiings.Repo.SettingsRepoImpl
 import com.example.e_commerceapp.HomeActivity.Settiings.viewModel.SettingsViewModel
 import com.example.e_commerceapp.HomeActivity.Settiings.viewModel.SettingsViewModelFactory
@@ -51,6 +53,11 @@ if (token != null){
                 buttonlog.setOnClickListener(){
                     viewModel.InitFirebase()
                     viewModel.logout()
+                     // Replace with your actual class name
+                    val intent = Intent(requireActivity(), AuthenticationActivity::class.java )
+                    startActivity(intent)
+                    requireActivity().finish()
+
 
                 }
 

@@ -1,7 +1,9 @@
 package com.example.e_commerceapp.Authentication.Login.viewmodel
 
 
+import android.content.Context
 import android.util.Log
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +11,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.e_commerceapp.Authentication.Login.Repo.LoginRepo
 import com.example.e_commerceapp.Model.DataXX
 import com.example.e_commerceapp.Model.LoginRequest
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
@@ -68,11 +71,11 @@ class LoginViewModel(private val loginRepo: LoginRepo) : ViewModel() {
 
    }
 
-    fun alreadyLoggedIn(){
+    fun alreadyLoggedIn(context: Context){
 
 
      if(firebaseAuth.currentUser != null){
-
+         MaterialAlertDialogBuilder(context).setTitle("Logging you In ").setMessage("Please wait").show()
          LogintoAPI()
 
      }

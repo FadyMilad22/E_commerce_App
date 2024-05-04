@@ -1,6 +1,7 @@
 package com.example.e_commerceapp.Authentication.SignUp.view
 
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import com.example.e_commerceapp.Authentication.SignUp.viewmodel.SignupViewModel
 import com.example.e_commerceapp.Authentication.SignUp.viewmodel.SignupViewModelFactory
 import com.example.e_commerceapp.Network.APIClient
 import com.example.e_commerceapp.R
+import com.example.e_commerceapp.SellerAcvtivity.SellerActivity
 import com.example.e_commerceapp.databinding.FragmentSignupBinding
 import com.example.e_commerceapp.databinding.FragmentSignupSellerBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -48,6 +50,7 @@ class SignupSellerFragment : Fragment() {
 
         binding.textView.setOnClickListener(){
             findNavController().navigate(R.id.action_signupSellerFragment_to_signupFragment)
+
         }
 
 
@@ -55,7 +58,13 @@ class SignupSellerFragment : Fragment() {
 
             if (it == true){
                 Toast.makeText(context, "Seller Registered", Toast.LENGTH_SHORT).show()
-                view.findNavController().navigate(R.id.action_signupSellerFragment_to_sellerActivity)
+                val intent = Intent(requireActivity(), SellerActivity::class.java )
+                intent.putExtra("token", viewModel.token.value)
+                startActivity(intent)
+                requireActivity().finish()
+
+
+            //    view.findNavController().navigate(R.id.action_signupSellerFragment_to_sellerActivity)
             }else if (it==false){
                 Toast.makeText(context, "Seller isn't Registered,check with the Admin ", Toast.LENGTH_SHORT).show()
             }

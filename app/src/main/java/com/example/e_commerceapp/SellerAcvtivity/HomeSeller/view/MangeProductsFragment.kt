@@ -47,9 +47,9 @@ class MangeProductsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         gettingViewModelReady()
 
-
+            Log.i("Fady12",args.token!!)
             viewModel.getItemsOfThisSeller(args.token!!)
-        Log.i("Fady12",args.token!!)
+
 
 
 

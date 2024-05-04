@@ -17,4 +17,6 @@ interface ShopRepo {
 
     suspend fun AddItemToCart(item: CartItem, token :String): Response<AddItemToCartResponse>
 //    suspend fun getAllProducts () : Response<Recipe>
+    suspend fun getItemsofCategory(category : String): Response<ItemsOfCategoryResponse>
+
 }

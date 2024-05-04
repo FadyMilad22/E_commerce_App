@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import com.example.e_commerceapp.HomeActivity.ShopScreen.Repo.ShopRepo
+import com.example.e_commerceapp.HomeActivity.ShopScreen.Repo.ShopRepoImpl
 import com.example.e_commerceapp.Model.CartItem
 import com.example.e_commerceapp.Model.Category
 import com.example.e_commerceapp.Model.Item
@@ -20,6 +21,8 @@ class ShopViewModel(private val shopRepo: ShopRepo) : ViewModel() {
     private val _searchItems = MutableLiveData<List<Item>>()
     val searchItems: LiveData<List<Item>> =  _searchItems
 
+    private val _categoryItems = MutableLiveData<List<Item>?>()
+    val categoryItems: LiveData<List<Item>?> =  _categoryItems
 
     private val _sucssesfulAddingToCart = MutableLiveData<Boolean?>(null)
     val succesfulAdding: LiveData<Boolean?> =  _sucssesfulAddingToCart
@@ -77,7 +80,16 @@ _sucssesfulAddingToCart.value = true
 
     }
 
+    fun getthisCategoryItems(category: String) {
+        viewModelScope.launch {
+            val response = shopRepo.getItemsofCategory(category)
+            if (response.isSuccessful) {
 
+                _categoryItems.value = response.body()?.items
+                Log.i("Fady1212","Message :${response.body()?.message} \n body :${response.body()?.items} \n Code: ${response.code()}")
+            }
+        }
+    }
 
 
 }

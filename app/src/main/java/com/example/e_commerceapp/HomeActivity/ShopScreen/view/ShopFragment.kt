@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.e_commerceapp.HomeActivity.ShopScreen.viewModel.ShopViewModel
@@ -21,7 +20,7 @@ import com.example.e_commerceapp.HomeActivity.ShopScreen.adaptor.SearchAdapter
 import com.example.e_commerceapp.HomeActivity.ShopScreen.adaptor.ShopAdapter
 import com.example.e_commerceapp.Model.Category
 import com.example.e_commerceapp.Model.Item
-import com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.MangeProductsFragmentDirections
+import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.FragmentShopBinding
 
 
@@ -47,14 +46,33 @@ private lateinit var binding:FragmentShopBinding
         val token: String? = requireActivity().intent.getStringExtra("token")
         viewModel.getCategories()
 
-        viewModel.categories.observe(viewLifecycleOwner) { categories ->
-            if (categories != null) {
-                //     binding.progresBarAllMeals.visibility = View.GONE
-                addElements(categories, binding.recyclerViewShop)
-            } else {
-                //   binding.progresBarAllMeals.visibility = View.VISIBLE
+
+        binding.button.setOnClickListener(){
+            if (binding.searchView.visibility.equals(View.GONE)){
+
+                binding.searchView.visibility = View.VISIBLE
+                binding.button.setImageResource(android.R.color.transparent)
+                binding.button.setBackgroundResource(R.drawable.catigo)
+
+            }else{
+                viewModel.getCategories()
+                viewModel.categories.observe(viewLifecycleOwner) { categories ->
+                    if (categories != null) {
+                        //     binding.progresBarAllMeals.visibility = View.GONE
+                            addElements(categories, binding.recyclerViewShop, token!!)
+                        binding.searchView.visibility = View.GONE
+                        binding.button.setImageResource(com.bumptech.glide.R.drawable.abc_ic_search_api_material)
+                        binding.button.setBackgroundResource(android.R.color.transparent)
+                    } else { //   binding.progresBarAllMeals.visibility = View.VISIBLE
+                    }
+                }
             }
-        }
+
+
+
+}
+
+
 
         viewModel.searchItems.observe(viewLifecycleOwner) { items ->
             if (items != null) {
@@ -84,19 +102,18 @@ private lateinit var binding:FragmentShopBinding
         })
 
 
-        binding.searchView.setOnCloseListener {
-
-            addElements(viewModel.categories.value!!, binding.recyclerViewShop)
-            false
-        }
+//        binding.searchView.setOnCloseListener {
+//
+//            addElements(viewModel.categories.value!!, binding.recyclerViewShop)
+//            false
+//        }
 
 
     }
 
 
-    private fun addElements(data:List<Category>, recyclerView: RecyclerView){
-        recyclerView.adapter = ShopAdapter(data, viewModel
-        )
+    private fun addElements(data:List<Category>, recyclerView: RecyclerView, token: String){
+        recyclerView.adapter = ShopAdapter(data, viewModel){ onCategoryClick(it, token = token)}
 
         recyclerView.layoutManager = GridLayoutManager(requireContext(),2,RecyclerView.VERTICAL,false)
     }
@@ -133,7 +150,12 @@ private lateinit var binding:FragmentShopBinding
     }
 
 
-
+    private fun onCategoryClick(clickedCategory: Category,token:String) {
+        Log.i("Fadyitem","true")
+        Log.i("Fadyitem","${token}")
+        val action = ShopFragmentDirections.actionShopFragmentToCategoryItemFragment(clickedCategory.Name,token = token) // token = args.token
+        findNavController().navigate(action)
+    }
 }
 
 

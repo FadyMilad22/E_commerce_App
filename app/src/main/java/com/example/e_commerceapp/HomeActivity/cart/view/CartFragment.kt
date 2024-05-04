@@ -52,7 +52,7 @@ binding.button2.setOnClickListener(){
 
 if(viewModel.cart.value?.order?.Total_payment != null){
     if (viewModel.cart.value?.order?.Total_payment!! > 0 ){
-    viewModel.confirmOrder(token!!)}}
+    viewModel.confirmOrder(token!!,requireContext())}}
 
 
     else{
@@ -65,7 +65,13 @@ if(viewModel.cart.value?.order?.Total_payment != null){
         viewModel.successfulOrder.observe(viewLifecycleOwner){
             if(it == true ){
 
-                Toast.makeText(context,"Order Confirmed Check you Order's List",Toast.LENGTH_SHORT).show()
+
+
+                addElementsCart(emptyList(),binding.recyclerViewShop,token!!)
+                binding.textView27.text = "0"
+
+
+
             }else if ( it == false){
                 Toast.makeText(context,"Not Confirmed Check your Balance",Toast.LENGTH_SHORT).show()
 

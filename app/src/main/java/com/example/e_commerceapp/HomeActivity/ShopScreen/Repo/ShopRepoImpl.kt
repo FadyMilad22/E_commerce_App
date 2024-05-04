@@ -39,6 +39,10 @@ override suspend fun getCategories(): Response<CategoriesResponse> {
 
     }
 
+    override suspend fun getItemsofCategory(category : String): Response<ItemsOfCategoryResponse> {
+        return remoteDataSource.getItemsOfCategory(category)
+    }
+
 
 
                 }

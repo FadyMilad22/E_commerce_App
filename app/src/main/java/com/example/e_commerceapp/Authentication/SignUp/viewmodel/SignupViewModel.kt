@@ -19,6 +19,11 @@ class SignupViewModel (private val signupRepo: SignupRepo): ViewModel() {
     private lateinit var firebaseAuth: FirebaseAuth
 
 
+    private var _token = MutableLiveData<String?>()
+    val token : LiveData<String?> =_token
+
+
+
     fun  InitFirebase(){
         viewModelScope.launch {
             firebaseAuth = FirebaseAuth.getInstance()
@@ -31,17 +36,24 @@ class SignupViewModel (private val signupRepo: SignupRepo): ViewModel() {
 
         viewModelScope.launch {
             firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-                _successfullRegister.value = it.isSuccessful
+
                 if (it.isSuccessful){
 
                     viewModelScope.launch(Dispatchers.IO) {
+
 
 Log.i("Fady1234","${firebaseAuth.currentUser?.uid}" )
                         val user = Customer(firebaseAuth.currentUser?.uid, name, phoneNumber)
 
                        val response= signupRepo.regestercustomer(user)
-                        Log.i("Fady12345","${response.isSuccessful}" )
-                        Log.i("Fady12345","${response.body()}" )
+                        if (response.isSuccessful){
+                            viewModelScope.launch {
+                            _token.value = response.body()!!.data!!.accessToken
+                            _successfullRegister.value = response.isSuccessful
+                            Log.i("Fady12345","${response.isSuccessful}" )
+                            Log.i("Fady12345","${response.body()}" )}
+                        }
+
                     }
 
                 }
@@ -55,17 +67,24 @@ Log.i("Fady1234","${firebaseAuth.currentUser?.uid}" )
 
         viewModelScope.launch {
             firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-                _successfullRegister.value = it.isSuccessful
                 if (it.isSuccessful){
 
                     viewModelScope.launch(Dispatchers.IO) {
 
                         Log.i("Fad1234","${firebaseAuth.currentUser?.uid}" )
-                        val user = Seller(firebaseAuth.currentUser?.uid, name)
+
+
+                      viewModelScope.launch(){
+                          val user = Seller(firebaseAuth.currentUser?.uid, name)
 
                         val response= signupRepo.regesterSeller(user)
+                          if (response.isSuccessful){
+                          _token.value = response.body()!!.data!!.accessToken
+                              Log.i("Fad12345Sellersignup","${response.body()!!.data!!.accessToken}" )
+                          _successfullRegister.value = it.isSuccessful
+
                         Log.i("Fad12345","${response.isSuccessful}" )
-                        Log.i("Fad12345","${response.body()}" )
+                        Log.i("Fad12345","${response.body()}" )}}
                     }
 
                 }
