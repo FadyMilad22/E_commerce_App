@@ -1,9 +1,6 @@
 package com.example.e_commerceapp.HomeActivity.ShopScreen.adaptor
 
 
-import android.graphics.Color
-import android.graphics.ColorMatrixColorFilter
-import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -13,13 +10,9 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.request.RequestOptions
-import com.example.e_commerceapp.HomeActivity.HomeScreen.viewModel.HomeViewModel
 import com.example.e_commerceapp.HomeActivity.ShopScreen.viewModel.ShopViewModel
 import com.example.e_commerceapp.Model.Category
-import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.R
 
 
@@ -30,7 +23,7 @@ import kotlinx.coroutines.Deferred
 
 class ShopAdapter(val data:List<Category>,
                   val viewModel: ShopViewModel,
-          ) :RecyclerView.Adapter<ShopAdapter.MyViewHolder>() { //        private val onRecipeClick: (Item) -> Unit
+                  private val onCategoryClick: (Category) -> Unit) :RecyclerView.Adapter<ShopAdapter.MyViewHolder>() { //
     lateinit var a:Deferred<Unit>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val row =
@@ -42,7 +35,7 @@ class ShopAdapter(val data:List<Category>,
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 //
-        holder.textViewTitle.text = data[position].name
+        holder.textViewTitle.text = data[position].Name
 
 
         val imgView:ImageView = holder.imageView
@@ -74,6 +67,13 @@ class ShopAdapter(val data:List<Category>,
 //        holder.itemView.setOnClickListener {
 //        onRecipeClick(meal)
 //        }
+
+        val category = data[position]
+
+        holder.itemView.setOnClickListener {
+            onCategoryClick(category)
+        }
+
     }
 
     override fun getItemCount(): Int {

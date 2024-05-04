@@ -9,11 +9,10 @@
 
     <!-- Search Title -->
     <TextView
-        android:id="@+id/textViewSearchTitle"
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Shop"
 
         android:textColor="@color/onprimary_color"
         android:textSize="24sp"
@@ -23,19 +22,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Search Bar -->
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:iconifiedByDefault="false"
-        android:inputType="text"
-        android:queryHint="Search"
-        android:textColor="@color/onprimary_color"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSearchTitle" />
 
     <!-- Search Result List -->
     <androidx.recyclerview.widget.RecyclerView
@@ -50,19 +36,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <ImageView
-        android:id="@+id/button"
-
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/catigo"
-        android:textColorHighlight="#00FFFFFF"
-        android:textColorLink="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSearchTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

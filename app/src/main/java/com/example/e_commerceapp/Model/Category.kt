@@ -1,3 +1,3 @@
 package com.example.e_commerceapp.Model
 
-data class Category(val name :String ,val URL :String)
+data class Category(val Name :String, val URL :String)

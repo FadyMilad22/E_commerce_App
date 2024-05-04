@@ -1,6 +1,8 @@
 package com.example.e_commerceapp.HomeActivity.cart.viewModel
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,8 +25,10 @@ class CartViewModel (private val cartRepo: cartRepo): ViewModel() {
     val successfulDelete: LiveData<Boolean> =  _successfulDelete
 
 
-    private val _successfulOrder = MutableLiveData<Boolean>(null)
-    val successfulOrder: LiveData<Boolean> =  _successfulOrder
+    private val _successfulOrder = MutableLiveData<Boolean?>(null)
+
+    val successfulOrder: LiveData<Boolean?> =  _successfulOrder
+
 
 fun getCart(token :String){
 
@@ -82,7 +86,7 @@ fun getCart(token :String){
     }
 
 
-    fun confirmOrder(token :String){
+    fun confirmOrder(token :String , context: Context){
 
 
         viewModelScope.launch {
@@ -96,6 +100,8 @@ fun getCart(token :String){
             if (response.isSuccessful){
                 getCart(token)
                 _successfulOrder.value = true
+                Toast.makeText(context,"Order Confirmed Check you Order's List", Toast.LENGTH_SHORT).show()
+
             }else if (response.code().equals(400)){
                 _successfulOrder.value = false
 

@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
 
 
         viewModel.InitFirebase()
-        viewModel.alreadyLoggedIn()
+        viewModel.alreadyLoggedIn(requireContext())
 
         binding.textView6.setOnClickListener(){
             view.findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
@@ -72,6 +72,7 @@ class LoginFragment : Fragment() {
                     val intent = Intent(this.context, SellerActivity::class.java)
                     intent.putExtra("token", viewModel.user.value?.accessToken.toString()) //data is a string variable holding some value.
                     startActivity(intent)
+                    requireActivity().finish()
 
                 }
                 else {
@@ -85,6 +86,7 @@ class LoginFragment : Fragment() {
                     //data is a string variable holding some value.
                     Log.i("Fady","${viewModel.user.value?.userType}")
                     startActivity(intent)
+                    requireActivity().finish()
                 }
 
 
@@ -117,10 +119,10 @@ class LoginFragment : Fragment() {
             viewModel.loginUserFirebase(email,password)
         }
         if(!isValidPassword(password)){
-            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Password")
+            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Password").show()
         }
         if(!isValidEmail(email)){
-            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Email")
+            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Email").show()
         }
     }
 

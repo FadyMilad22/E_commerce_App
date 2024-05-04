@@ -1,6 +1,7 @@
 package com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.example.e_commerceapp.Authentication.AuthenticationActivity
 import com.example.e_commerceapp.HomeActivity.cart.viewModel.HomeSellerViewModel
 import com.example.e_commerceapp.HomeActivity.cart.viewModel.HomeSellerViewModelFactory
 import com.example.e_commerceapp.Network.APIClient
@@ -96,6 +98,10 @@ binding.buttonlog.setOnClickListener(){
 
         viewModel.InitFirebase()
         viewModel.logout()
+    val intent = Intent(requireActivity(), AuthenticationActivity::class.java )
+    startActivity(intent)
+    requireActivity().finish()
+
 
 }
 

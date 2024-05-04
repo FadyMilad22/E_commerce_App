@@ -1,6 +1,7 @@
 package com.example.e_commerceapp.Authentication.SignUp.view
 
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.e_commerceapp.Authentication.SignUp.Repo.SignupRepoImpl
 import com.example.e_commerceapp.Authentication.SignUp.viewmodel.SignupViewModel
 import com.example.e_commerceapp.Authentication.SignUp.viewmodel.SignupViewModelFactory
+import com.example.e_commerceapp.HomeActivity.HomeActivity
 import com.example.e_commerceapp.Network.APIClient
 import com.example.e_commerceapp.R
 import com.example.e_commerceapp.databinding.FragmentSignupBinding
@@ -59,7 +61,17 @@ viewModel.successfullRegister.observe(viewLifecycleOwner){
 
     if (it == true){
         Toast.makeText(context, "User Registered", Toast.LENGTH_SHORT).show()
-        view.findNavController().navigate(R.id.action_signupFragment_to_homeActivity)
+//        view.findNavController().navigate(R.id.action_signupFragment_to_homeActivity)
+        val intent = Intent(requireActivity(), HomeActivity::class.java )
+        intent.putExtra(
+            "token",
+            viewModel.token.value
+
+        )
+        startActivity(intent)
+        requireActivity().finish()
+
+
     }else if (it==false){
       Toast.makeText(context, "User isn't Registered,check with the Admin ", Toast.LENGTH_SHORT).show()
     }
