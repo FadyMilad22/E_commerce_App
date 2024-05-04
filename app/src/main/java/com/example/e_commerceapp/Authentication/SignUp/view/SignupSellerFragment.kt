@@ -96,7 +96,7 @@ class SignupSellerFragment : Fragment() {
 
         Log.d("Fady","pass:$password")
         if( isValidName(name)&& isValidPassword(password) &&isValidEmail(email)){
-            viewModel.RegisterSellerFirebase(email,password,name)
+            viewModel.RegisterSellerFirebase(email,password,name,requireContext())
 
         }
         if(!isValidName(name)) {

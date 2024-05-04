@@ -2,6 +2,7 @@ package com.example.e_commerceapp.Authentication.Login.viewmodel
 
 
 import android.content.Context
+import android.content.DialogInterface
 import android.util.Log
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
@@ -38,14 +39,14 @@ class LoginViewModel(private val loginRepo: LoginRepo) : ViewModel() {
 
 
 
- fun loginUserFirebase(email :String , pass:String){
+ fun loginUserFirebase(email :String , pass:String , context: Context){
      viewModelScope.launch {
 
      firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
 
          if (it.isSuccessful) {
              Log.i("Fady1", "login success")
-             LogintoAPI()
+             LogintoAPI(context = context)
                  }
              }
          } }
@@ -53,18 +54,33 @@ class LoginViewModel(private val loginRepo: LoginRepo) : ViewModel() {
 
 
 
-   fun LogintoAPI(){
+   fun LogintoAPI(context :Context){
 
        viewModelScope.launch() {
            Log.i("Fady1", firebaseAuth.currentUser!!.uid)
 
            val response = loginRepo.loginUser(LoginRequest(firebaseAuth.currentUser!!.uid))
            Log.i("Fady1", "UID success")
+
            Log.i("Fady1", "${response.body()}")
            if (response.isSuccessful) {
 
                _user.value = (response.body()?.data)
                _successfullLogin.value = true
+           }else{
+               val builder = MaterialAlertDialogBuilder(context)
+               builder.setTitle("Network Error")
+               builder.setMessage("Due to Network error!")
+
+// **Important:** Create an instance of an OnClickListener
+               val clickListener = DialogInterface.OnClickListener { dialog, which ->
+                   if (which == DialogInterface.BUTTON_POSITIVE) {
+                       LogintoAPI(context) // Call your function here
+                   }
+               }
+
+               builder.setPositiveButton("Try again", clickListener)
+               builder.show()
            }
        }
 
@@ -76,7 +92,7 @@ class LoginViewModel(private val loginRepo: LoginRepo) : ViewModel() {
 
      if(firebaseAuth.currentUser != null){
          MaterialAlertDialogBuilder(context).setTitle("Logging you In ").setMessage("Please wait").show()
-         LogintoAPI()
+         LogintoAPI(context)
 
      }
 

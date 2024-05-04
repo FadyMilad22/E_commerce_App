@@ -17,6 +17,7 @@ import com.example.e_commerceapp.Model.HistoryResponse
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
+import com.example.e_commerceapp.Model.SellerReportsResponse
 import com.example.e_commerceapp.Model.TokenHolder
 import com.example.e_commerceapp.Model.UserDataResponse
 import com.example.e_commerceapp.Model.UserLoginResponse
@@ -125,7 +126,8 @@ interface APIService {
     @GET("customers/history")
     suspend fun getHistory(@Header("Authorization") token: String): Response<HistoryResponse>
 
-
+    @GET("sellers/reports")
+    suspend fun getReports(@Header("Authorization") token: String): Response<SellerReportsResponse>
 
 
 

@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.e_commerceapp.Model.History
 import com.example.e_commerceapp.Model.Item
+import com.example.e_commerceapp.Model.Report
 import com.example.e_commerceapp.Model.User
 import com.example.e_commerceapp.SellerAcvtivity.HomeSeller.Repo.HomeSellerRepo
 import com.google.android.material.internal.ContextUtils.getActivity
@@ -24,6 +26,12 @@ class HomeSellerViewModel (private val homeSellerRepo: HomeSellerRepo): ViewMode
 
     private var _userD = MutableLiveData<User>()
     val userD : LiveData<User> = _userD
+
+
+    private val _priceList = MutableLiveData<List<Report>>()
+    val priceList: LiveData<List<Report>> =  _priceList
+
+
 
 
 
@@ -93,6 +101,23 @@ class HomeSellerViewModel (private val homeSellerRepo: HomeSellerRepo): ViewMode
     }
 
 
+
+    fun getReports(token :String){
+
+        viewModelScope.launch {
+
+            val response = homeSellerRepo.getReports(token)
+            Log.i("Fady1212","Message get Reports :${response.body()?.message} } \n Code: ${response.code()}")
+
+
+            if (response.isSuccessful) {
+
+                _priceList.value  =  response.body()?.reports
+
+            }
+        }
+
+    }
 
 
 
