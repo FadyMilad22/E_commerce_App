@@ -48,11 +48,21 @@ private lateinit var binding:FragmentAddProductsSellerBinding
         binding.apply {
             addbtn.setOnClickListener(){
                 Log.i("Fady12","The Button is Clicked")
-                val myList = listOf(catigories.text.toString())
-                val item : AddItem =AddItem(categories = myList, Name = name.text.toString(), Description = descripe.text.toString(), Price = price.text.toString().toDouble(), Quantity = quantity.text.toString().toInt(), URL = imgUrl.text.toString() )
-                viewModel.addProduct(item,args.token!!)
+                if(isValidNumber(price.text.toString())&& isValidNumber(quantity.text.toString())&& !(catigories.text.toString().isEmpty())&& !(descripe.text.toString().isEmpty())&&!(imgUrl.text.toString().isEmpty())) {
+                    val myList = catigories.text!!.split(",")
+                    val item: AddItem = AddItem(
+                        categories = myList,
+                        Name = name.text.toString(),
+                        Description = descripe.text.toString(),
+                        Price = price.text.toString().toDouble(),
+                        Quantity = quantity.text.toString().toInt(),
+                        URL = imgUrl.text.toString()
+                    )
+                    viewModel.addProduct(item, args.token!!)
 
-
+                }else{
+                    MaterialAlertDialogBuilder(requireContext()).setTitle("Warning").setMessage("Check all fields are filled in a right way ").setPositiveButton("ok",null).show()
+                }
             }
         }
 
@@ -62,7 +72,7 @@ private lateinit var binding:FragmentAddProductsSellerBinding
             Navigation.findNavController(view).navigate(action)
 
             Log.i("Fady4","It's here")
-           MaterialAlertDialogBuilder(requireContext()).setTitle("Product added Successfully")
+           MaterialAlertDialogBuilder(requireContext()).setTitle("Product added Successfully").setPositiveButton("ok",null).show()
         }
     }
 
@@ -74,4 +84,18 @@ private lateinit var binding:FragmentAddProductsSellerBinding
         val factory = AddProductsSellerViewModelFactory(AddProductsSellerRepoImpl(APIClient))
         viewModel = ViewModelProvider(this,factory)[AddProductsSellerViewModel::class.java]
     }
+
+
+
+    private fun isValidNumber(input: String): Boolean {
+        // Check for empty string or spaces first for efficiency
+        if (input.isEmpty() || input.isBlank()) {
+            return false
+        }
+
+        val numberRegex = "^[0-9]+$".toRegex() // Only digits allowed
+        return input.matches(numberRegex)
+    }
+
+
 }

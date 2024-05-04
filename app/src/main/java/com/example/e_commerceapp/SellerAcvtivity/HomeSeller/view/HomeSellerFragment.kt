@@ -56,18 +56,18 @@ private lateinit var binding : FragmentHomeSellerBinding
             viewModel.getUserData(token)
         }
 
-//        val viewModelShared: SharedViewModel by lazy {
-//            ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-//        }
-//        viewModelShared.token.observe(viewLifecycleOwner) { data ->
-//            // Now you have your string data from the Activity
-//
-//        }
+        viewModel.userD.observe(viewLifecycleOwner){
+
+            if(it != null){
+                binding.textUsername.text = "Hi ${it.Username}"
+            }
+        }
 
 
         binding.button1.setOnClickListener(){
 
-            Toast.makeText(context, "Not yet Implemented ", Toast.LENGTH_SHORT).show()
+            val action = HomeSellerFragmentDirections.actionHomeSellerFragmentToReportsFragment(viewModel.token.value)
+            Navigation.findNavController(view).navigate(action)
         }
 
 

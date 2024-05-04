@@ -1,5 +1,7 @@
 package com.example.e_commerceapp.HomeActivity.HomeScreen.Repo
 
+import com.example.e_commerceapp.Model.AddItemToCartResponse
+import com.example.e_commerceapp.Model.CartItem
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.UserDataResponse
 import com.example.e_commerceapp.Network.RemoteDataSource
@@ -15,4 +17,9 @@ class HomeRepoImpl(val remoteDataSource: RemoteDataSource,
     }
 
 
+    override suspend fun AddItemToCart(item: CartItem, token :String): Response<AddItemToCartResponse> {
+        return remoteDataSource.addItemtoCart(item,token)
+
+
+    }
 }

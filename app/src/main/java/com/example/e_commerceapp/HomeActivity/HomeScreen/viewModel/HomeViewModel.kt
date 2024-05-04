@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.e_commerceapp.HomeActivity.HomeScreen.Repo.HomeRepo
+import com.example.e_commerceapp.Model.CartItem
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.ItemsOfCategoryResponse
 import com.example.e_commerceapp.Model.User
@@ -18,7 +19,8 @@ class HomeViewModel(private val homeRepo : HomeRepo) : ViewModel() {
     val tokenC : LiveData<String?> =_tokenC
 
 
-
+    private val _sucssesfulAddingToCart = MutableLiveData<Boolean?>(null)
+    val succesfulAdding: LiveData<Boolean?> =  _sucssesfulAddingToCart
 
     private val _exclusiveDeals = MutableLiveData<List<Item>>()
     val exclusiveDeals: LiveData<List<Item>> =  _exclusiveDeals
@@ -59,6 +61,29 @@ class HomeViewModel(private val homeRepo : HomeRepo) : ViewModel() {
         }
 
 
+
+
+    fun addItemToCart(item: CartItem, token :String ){
+        viewModelScope.launch {
+
+            val response = homeRepo.AddItemToCart(item, token)
+            Log.i("Fady5122","Message :${response.body()?.message} \nCode: ${response.code()}")
+            if(response.isSuccessful){
+
+                _sucssesfulAddingToCart.value = true
+
+            }
+
+
+        }
+
+    }
+
+    fun returnFalse(){
+        viewModelScope.launch(){
+            _sucssesfulAddingToCart.value= false
+        }
+    }
 
 
 

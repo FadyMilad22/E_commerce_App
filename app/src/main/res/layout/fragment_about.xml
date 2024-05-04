@@ -1,11 +1,12 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/about_fragment"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/about_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -19,108 +20,50 @@ android:layout_height="match_parent">
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
-        android:src="@drawable/img" />
+        android:src="@drawable/logowithback" />
 
-    <!-- About App -->
     <TextView
         android:id="@+id/textViewAboutApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
         android:text="About the App"
-        android:textColor="@android:color/black"
+        android:textColor="@color/onprimary_color"
         android:textSize="20sp"
-        android:textStyle="bold" />
 
-    <TextView
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="App that provides personalised, step-by-step instructions. Users can search through a large number of recipes, save their favourites, and view cooking demonstration videos"
-        android:textColor="@android:color/black"
-        android:textSize="16sp" />
-
-    <!-- About Us -->
-    <TextView
-        android:id="@+id/textViewAboutUs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="About Me"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <!-- Creator 1 -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="Fady Milad Garas"
-        android:textColor="@color/onprimary_color"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Email: elfadyy2010@yahoo.com"
-        android:textColor="@color/md_theme_tertiaryFixedDim"
-        android:textSize="14sp" />
-
-    <!-- Creator 2 -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text=""
-        android:textColor="@color/onprimary_color"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Email: "
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" />
-
-    <!-- Creator 3 -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text=""
-        android:textColor="@color/onprimary_color"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text=""
-        android:textColor="@color/md_theme_tertiaryFixedDim"
-        android:textSize="14sp" />
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@color/onprimary_color">
+    <!-- About App -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-    <!-- Creator 3 -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text=""
-        android:textColor="@color/onprimary_color"
-        android:textSize="16sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="An E-Commerce Application\n\nCustomers can browse products Categories, Search a product by it's name ,Read Products Details , Charge there balance using Credit cards, Add needed products to the cart ، then Confirm there order and in the End See there Orders History.\n\nSellers can Check there balance, Check there Reports and Profit History also Add/Edit/Delete Products."
+                android:textColor="@color/primary_color"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text=""
-        android:textColor="@color/md_theme_tertiaryFixedDim"
-        android:textSize="14sp" />
+    </androidx.cardview.widget.CardView>
+
 </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

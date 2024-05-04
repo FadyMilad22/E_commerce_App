@@ -84,8 +84,8 @@ class HomeFragment : Fragment() {
 
 
     private fun addElements(data:List<Item>, recyclerView: RecyclerView, token :String){
-        recyclerView.adapter = HomeAdapter(data, viewModel
-        ){ onProductClick(it,token)}
+        recyclerView.adapter = HomeAdapter(data, viewModel,requireContext(),token,viewLifecycleOwner
+        ) { onProductClick(it, token )}
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext(),
             RecyclerView.HORIZONTAL, false)

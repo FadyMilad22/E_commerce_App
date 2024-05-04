@@ -47,10 +47,9 @@ class SignupFragment : Fragment() {
                isValidData(inputEmail.text.toString().trim(),inputUsername.text.toString().trim(),
                    inputMobile.text.toString().trim(),inputPassword.text.toString().trim()) } }
 
-  binding.textView2.setOnClickListener(){
+  binding.textView5.setOnClickListener(){
       findNavController().navigate(R.id.action_signupFragment_to_loginFragment)
   }
-
         binding.textView.setOnClickListener(){
             findNavController().navigate(R.id.action_signupFragment_to_signupSellerFragment)
         }
@@ -103,7 +102,7 @@ viewModel.successfullRegister.observe(viewLifecycleOwner){
         Log.d("Fady","number:$phoneNumber")
         Log.d("Fady","pass:$password")
         if(isValidName(name)&& isValidPhoneNumber(phoneNumber)&& isValidPassword(password) &&isValidEmail(email)){
-            viewModel.RegisterUserFirebase(email,password,name,phoneNumber)
+            viewModel.RegisterUserFirebase(email,password,name,phoneNumber,requireContext())
 
         }
         if(!isValidName(name)) {

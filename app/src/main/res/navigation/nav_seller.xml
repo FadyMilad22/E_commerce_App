@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_homeSellerFragment_to_mangeProductsFragment"
             app:destination="@id/mangeProductsFragment" />
+        <action
+            android:id="@+id/action_homeSellerFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment" />
     </fragment>
     <fragment
         android:id="@+id/mangeProductsFragment"
@@ -127,5 +130,14 @@
             app:destination="@id/productsDetailsSellerFragment"
             app:popUpTo="@id/mangeProductsFragment"
             app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="com.example.e_commerceapp.SellerAcvtivity.HomeSeller.view.ReportsFragment"
+        android:label="ReportsFragment" >
+        <argument
+            android:name="token"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

@@ -48,7 +48,7 @@ class LoginFragment : Fragment() {
         viewModel.InitFirebase()
         viewModel.alreadyLoggedIn(requireContext())
 
-        binding.textView6.setOnClickListener(){
+        binding.textView.setOnClickListener(){
             view.findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
 
@@ -97,6 +97,13 @@ class LoginFragment : Fragment() {
 
         }
 
+        binding.textView4.setOnClickListener(){
+
+            MaterialAlertDialogBuilder(requireContext()).setTitle("Not Yet !").setMessage("Wait for this feather in the upcoming version\nTill then Save your Password !").setPositiveButton("Ok", null).show()
+
+
+        }
+
 
     }
 
@@ -116,13 +123,13 @@ class LoginFragment : Fragment() {
         Log.d("Fady","Email:$email")
         Log.d("Fady","pass:$password")
         if(isValidPassword(password) &&isValidEmail(email)){
-            viewModel.loginUserFirebase(email,password)
+            viewModel.loginUserFirebase(email,password,requireContext())
         }
         if(!isValidPassword(password)){
-            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Password").show()
+            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Password").setPositiveButton("Ok", null).show()
         }
         if(!isValidEmail(email)){
-            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Email").show()
+            MaterialAlertDialogBuilder(requireContext()).setTitle("Invalid Email").setPositiveButton("Ok", null).show()
         }
     }
 

@@ -17,6 +17,7 @@ import com.example.e_commerceapp.Model.HistoryResponse
 import com.example.e_commerceapp.Model.Item
 import com.example.e_commerceapp.Model.LoginRequest
 import com.example.e_commerceapp.Model.Seller
+import com.example.e_commerceapp.Model.SellerReportsResponse
 import com.example.e_commerceapp.Model.UserDataResponse
 import com.example.e_commerceapp.Model.UserLoginResponse
 import retrofit2.Response
@@ -35,18 +36,15 @@ interface RemoteDataSource {
     suspend fun getItemsofthisSeller(token: String): Response<ItemsOfCategoryResponse>
     suspend fun loginUser(loginResquest : LoginRequest): Response<UserLoginResponse>
     suspend fun getUserData(userType :String,token: String): Response<UserDataResponse>
-
     suspend fun addItemtoCart(item: CartItem, token: String): Response<AddItemToCartResponse>
-
     suspend fun DeletellCart(token: String): Response<AuthResponse>
     suspend fun GetCart(token: String): Response<Cart>
     suspend fun deleteItemFromCart(itemID: Int,token: String): Response<AddItemToCartResponse>
     suspend fun EditItemInCart(item: CartItem,token: String): Response<AddItemToCartResponse>
-
     suspend fun confirmOrder(token: String): Response<AuthResponse>
     suspend fun addAddress(address: Address, token: String): Response<AddressResponse>
-
     suspend fun chargeBalance(card : CharingBalance, token: String): Response<BalanceChargeResponse>
     suspend fun getHistory(token: String): Response<HistoryResponse>
+    suspend fun getReports(token: String): Response<SellerReportsResponse>
 
 }

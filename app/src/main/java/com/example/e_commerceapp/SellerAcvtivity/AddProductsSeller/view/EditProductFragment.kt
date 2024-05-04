@@ -67,7 +67,7 @@ class EditProductFragment : Fragment() {
         button3.setOnClickListener(){
 
             val text = textViewCatagory.text.toString()  // Ensure text is a String
-            val categoryList = text.split(" ")
+            val categoryList = text.split(",")
 
 // Optional: Remove empty elements if needed
             val filteredList = categoryList.filter { it.isNotEmpty() }

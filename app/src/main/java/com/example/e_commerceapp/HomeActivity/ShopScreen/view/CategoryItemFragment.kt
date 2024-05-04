@@ -64,7 +64,8 @@ class CategoryItemFragment : Fragment() {
 
 
     private fun addElements(data: List<Item>, recyclerView: RecyclerView, token:String){
-        recyclerView.adapter = SearchAdapter(data, viewModel){ onProductClick(it,token) }
+        recyclerView.adapter = SearchAdapter(data, viewModel,token,requireContext(),viewLifecycleOwner
+        ) { onProductClick(it, token )}
 
         recyclerView.layoutManager = GridLayoutManager(requireContext(),2,
             RecyclerView.VERTICAL,false)
