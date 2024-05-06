@@ -31,7 +31,8 @@ object APIHelper {
 
     val gson: Gson = GsonBuilder().serializeNulls().create()
     val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://e-commerce-backend-atmh.onrender.com/")
+       // .baseUrl("https://metal-ants-think.loca.lt/")
+       .baseUrl("https://e-commerce-backend-atmh.onrender.com/")
         .addConverterFactory(GsonConverterFactory.create(gson)).build()
 
 

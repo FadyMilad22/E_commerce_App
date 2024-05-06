@@ -27,8 +27,8 @@ import kotlinx.coroutines.Deferred
 class ReportsminiAdapter(val data:List<Price>,
                          val viewModel: HomeSellerViewModel,
                          val token : String,
-                         val url :String,
-                         private val onProductClick: (Item) -> Unit  ) :RecyclerView.Adapter<ReportsminiAdapter.MyViewHolder>() { //        private val onRecipeClick: (Item) -> Unit
+                         val url :String
+                         ) :RecyclerView.Adapter<ReportsminiAdapter.MyViewHolder>() { //        private val onRecipeClick: (Item) -> Unit
     lateinit var a:Deferred<Unit>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val row =
