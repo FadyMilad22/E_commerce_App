@@ -43,7 +43,7 @@ class ReportsMegaAdapter(val data:List<Report>,
         holder.textViewProfit.text = data[position].TotalProfit.toString() + " $"
         holder.textViewName.text = data[position].Name
         holder.textViewQuantity.text = data[position].TotalQuantity.toString()
-        addElementsCart(data[position].prices,holder.recyclerViewMini,token)
+        addElementsCart(data[position].prices,holder.recyclerViewMini,data[position].URL)
 
 
     }
@@ -65,7 +65,7 @@ class ReportsMegaAdapter(val data:List<Report>,
 
     private fun addElementsCart(data: List<Price>, recyclerView: RecyclerView, url : String, ) {
         recyclerView.adapter =
-           ReportsminiAdapter(data, viewModel, token, url) { Unit }
+           ReportsminiAdapter(data, viewModel, token, url)
 
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
