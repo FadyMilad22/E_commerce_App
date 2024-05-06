@@ -40,7 +40,7 @@ class HomeViewModel(private val homeRepo : HomeRepo) : ViewModel() {
 
     fun getExclusiveDeals() {
         viewModelScope.launch {
-            val response = homeRepo.getItemsofCategory("Electronics")
+            val response = homeRepo.getItemsofCategory("Hot Deals")
             if (response.isSuccessful) {
                  _exclusiveDeals.value = response.body()?.items
                 Log.i("Fady1212","Message :${response.body()?.message} \n body :${response.body()?.items} \n Code: ${response.code()}")
@@ -50,7 +50,7 @@ class HomeViewModel(private val homeRepo : HomeRepo) : ViewModel() {
 
         fun getHotDeals() {
             viewModelScope.launch {
-                val response = homeRepo.getItemsofCategory("Clothing")
+                val response = homeRepo.getItemsofCategory("Exclusive Offers !")
                 if (response.isSuccessful) {
 
                 _hotPrices.value = response.body()?.items
