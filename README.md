@@ -1,5 +1,5 @@
 # E-commerce
-E-commerce android application using firebase firestore for online authentication and advanced android topics. E-commerce android application that makes user buy his CLothes easily .
+E-commerce android application using firebase for online authentication and advanced android topics. E-commerce android application that makes user buy his CLothes easily. Also for Sellers to offer there products and Mange them 
 
 # Architecture 
 MVVM is pretty good in such cases. It goes one step further in separating the responsibilities of your code base. It clearly abstracts the logic of the actions that can be performed in the app.
