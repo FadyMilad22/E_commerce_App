@@ -28,9 +28,9 @@ MVVM is pretty good in such cases. It goes one step further in separating the re
 # Screens
 Authentication
 <p float="left">
-(https://github.com/FadyMilad22/E_commerce_App/assets/127983594/f0c345a0-c627-448d-9007-3e061d6182da)
-(https://github.com/FadyMilad22/E_commerce_App/assets/127983594/1607c07f-d253-411a-a6e7-a5cf54766016)
-(https://github.com/FadyMilad22/E_commerce_App/assets/127983594/3f73542f-7b72-4f7f-b916-1c62ccd4e937)
+![Alt text](https://github.com/FadyMilad22/E_commerce_App/assets/127983594/f0c345a0-c627-448d-9007-3e061d6182da.jpg)
+![Alt text](https://github.com/FadyMilad22/E_commerce_App/assets/127983594/1607c07f-d253-411a-a6e7-a5cf54766016jpg)
+![Alt text](https://github.com/FadyMilad22/E_commerce_App/assets/127983594/3f73542f-7b72-4f7f-b916-1c62ccd4e937jpg)
 </p>
 #Customer
 <p float="left">
