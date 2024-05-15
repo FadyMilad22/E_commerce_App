@@ -1,5 +1,6 @@
 # E-commerce
-E-commerce android application using firebase for online authentication and advanced android topics. E-commerce android application that makes user buy his CLothes easily. Also for Sellers to offer there products and Mange them 
+E-commerce android application using firebase for online authentication and advanced android topics. E-commerce android application that makes user buy his CLothes easily. Also for Sellers to offer there products and Mange them .
+To create A Distriputed System (requriemnt) Anther backend was used beside Firebase  created by node JS and accessed by retrofit in the App
 
 # Architecture 
 MVVM is pretty good in such cases. It goes one step further in separating the responsibilities of your code base. It clearly abstracts the logic of the actions that can be performed in the app.
