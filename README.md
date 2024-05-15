@@ -1,4 +1,4 @@
-![d drawio](https://github.com/FadyMilad22/E_commerce_App/assets/127983594/b3cf4418-1ac0-458f-bf4b-71c05a890ad8)# E-commerce
+# E-commerce
 E-commerce android application using firebase firestore for online authentication and advanced android topics. E-commerce android application that makes user buy his CLothes easily .
 
 # Architecture 
@@ -24,6 +24,26 @@ MVVM is pretty good in such cases. It goes one step further in separating the re
 * [Glide](https://github.com/bumptech/glide) : Glide is a fast and efficient open source media management and image loading framework for Android that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface. <br>
 
 * [Firebase](https://firebase.google.com/) : Firebase is a Backend-as-a-Service (Baas). It provides developers with a variety of tools and services to help them develop quality apps, grow their user base, and earn profit. It is built on Google’s infrastructure. <br>
+
+# Screens
+<p float="left">
+
+</p>
+<p float="left">
+
+</p>
+<p float="left">
+
+</p>
+<p float="left">
+
+</p>
+<p float="left">
+<img src="https://i.ibb.co/MC4kXZs/17.jpg" width="200">
+<img src="https://i.ibb.co/441ZYR0/18.jpg" width="200">
+<img src="https://i.ibb.co/9swvx7V/19.jpg" width="200">
+<img src="https://i.ibb.co/PFH7zBP/20.jpg" width="200">
+</p>
 
 
 
