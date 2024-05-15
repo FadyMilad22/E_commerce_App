@@ -26,11 +26,11 @@ MVVM is pretty good in such cases. It goes one step further in separating the re
 * [Firebase](https://firebase.google.com/) : Firebase is a Backend-as-a-Service (Baas). It provides developers with a variety of tools and services to help them develop quality apps, grow their user base, and earn profit. It is built on Google’s infrastructure. <br>
 
 # Screens
- #Authentication
+Authentication
 <p float="left">
-![WhatsApp Image 2024-05-15 at 13 59 37_3dce2e42](https://github.com/FadyMilad22/E_commerce_App/assets/127983594/f0c345a0-c627-448d-9007-3e061d6182da)
-![WhatsApp Image 2024-05-06 at 17 15 56_953a9e3a](https://github.com/FadyMilad22/E_commerce_App/assets/127983594/1607c07f-d253-411a-a6e7-a5cf54766016)
-![WhatsApp Image 2024-05-06 at 17 16 01_034a92cc](https://github.com/FadyMilad22/E_commerce_App/assets/127983594/3f73542f-7b72-4f7f-b916-1c62ccd4e937)
+(https://github.com/FadyMilad22/E_commerce_App/assets/127983594/f0c345a0-c627-448d-9007-3e061d6182da)
+(https://github.com/FadyMilad22/E_commerce_App/assets/127983594/1607c07f-d253-411a-a6e7-a5cf54766016)
+(https://github.com/FadyMilad22/E_commerce_App/assets/127983594/3f73542f-7b72-4f7f-b916-1c62ccd4e937)
 </p>
 #Customer
 <p float="left">
